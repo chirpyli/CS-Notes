@@ -277,6 +277,6 @@ sl@Li:/usr/local/kibana/bin$ ./kibana
 可登录```http://localhost:5601```进行访问。
 
 
->参考文档：      
-[Filebeat Reference [6.5] » Getting Started With Filebeat » Step 1: Install Filebeat](https://www.elastic.co/guide/en/beats/filebeat/6.5/filebeat-installation.html)
+>参考文档：             
+[Filebeat Reference [6.5] » Getting Started With Filebeat » Step 1: Install Filebeat](https://www.elastic.co/guide/en/beats/filebeat/6.5/filebeat-installation.html)                    
 [Elasticsearch Reference [6.5]](https://www.elastic.co/guide/en/elasticsearch/reference/6.5/_installation.html)
