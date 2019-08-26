@@ -15,7 +15,7 @@ Logstash默认安装已含有[Beat input](http://www.elastic.co/guide/en/logstas
 要在数据源主机上安装Filebeat，可以在Filebeat[产品页](https://www.elastic.co/downloads/beats/filebeat)中下载对应的安装包。也可以参阅[Filebeat入门](https://www.elastic.co/guide/en/beats/filebeat/6.5/filebeat-getting-started.html)获取其他安装说明。
 
 安装好Filebeat后，需要对其进行配置。在Filebeat安装目录中找到并打开```filebeat.yml```文件，替换如下行中的配置项。确保```paths```项为先前下载的Apache示例日志文件（logstash-tutorial.log）路径。
-```
+```yaml
 filebeat.prospectors:
 - type: log
   paths:
@@ -26,7 +26,7 @@ output.logstash:
 保存配置。为了简化配置，无需配置生成环境中常用TLS/SSL配置。
 
 在数据源主机上，输入以下命令运行Filebeat：
-```
+```shell
 sudo ./filebeat -e -c filebeat.yml -d "publish"
 ```
 >如果以root身份运行Filebeat，则需要更改配置文件的所有权（请参阅[Config File Ownership and Permissions](https://www.elastic.co/guide/en/beats/libbeat/6.5/config-file-permissions.html)）。
@@ -37,7 +37,7 @@ Filebeat将尝试在端口5044上建立连接。在Logstash启动一个激活状
 接下来，你要创建一个以Beats输入插件作为输入接收来自Beats的事件的Logstash管道配置。
 
 以下的一段内容为一个管道配置的框架：
-```
+```yaml
 # The # character at the beginning of a line indicates a comment. Use
 # comments to describe your configuration.
 input {
@@ -55,18 +55,18 @@ output {
 好，继续，在Logstash目录下创建一个```first-pipeline.conf```的文件并复制粘贴上面的管道配置框架内容。
 
 下一步，通过将以下行添加到```first-pipeline.conf```文件的输入部分，将Logstash实例配置为使用Beats作为输入插件：
-```
+```yaml
     beats {
         port => "5044"
     }
 ```
 
 后面你会配置Logstash输出到Elasticsearch中。目前，你可以先在输出部分添加下面几行配置使Logstash运行时输出到标准输出```stdout```：
-```
+```yaml
     stdout { codec => rubydebug }
 ```
 上面的步骤完成后，```first-pipeline.conf```文件配置应该如下：
-```
+```yaml
 input {
     beats {
         port => "5044"
@@ -98,7 +98,7 @@ bin/logstash -f first-pipeline.conf --config.reload.automatic
 在Logstash启动时，你会看到一或多行的关于Logstash忽略```pipelines.yml```文件的警告。你可以放心的忽略这条警告。```pipelines.yml```配置文件作用是一个Logstash实例中运行多个管道。这里的示例中，只运行了一个管道。
 
 如果你的管道正常运行，会在控制台输出大量的事件如下所示：
-```
+```yaml
 {
     "@timestamp" => 2017-11-09T01:44:20.071Z,
         "offset" => 325,
@@ -127,7 +127,7 @@ bin/logstash -f first-pipeline.conf --config.reload.automatic
 ```grok```过滤插件使您能够将非结构化日志数据解析为结构化易查询的形式。
 
 ```grok```过滤插件是在输入的日志数据中查找对应模式，因此需要您根据你自己的用例需求去配置插件如何识别对应的模式。 Web服务器日志示例中的代表行如下所示：
-```
+```shell
 83.149.9.216 - - [04/Jan/2015:05:13:42 +0000] "GET /presentations/logstash-monitorama-2013/images/kibana-search.png
 HTTP/1.1" 200 203023 "http://semicomplete.com/presentations/logstash-monitorama-2013/" "Mozilla/5.0 (Macintosh; Intel
 Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.77 Safari/537.36"
@@ -151,7 +151,7 @@ User agent|agent
 >如果你在构建```grok```模式时需要帮助，尝试使用[Grok调试器](https://www.elastic.co/guide/en/kibana/6.5/xpack-grokdebugger.html)。Grok调试器是的X-Pack的一个功能，可以免费使用。
 
 编辑```first-pipeline.conf```配置文件并将```filter```部分的内容替换为以下内容：
-```
+```yaml
 filter {
     grok {
         match => { "message" => "%{COMBINEDAPACHELOG}"}
@@ -159,7 +159,7 @@ filter {
 }
 ```
 上面工作完成后，```first-pipeline.conf```配置文件的内容如下：
-```
+```yaml
 input {
     beats {
         port => "5044"
@@ -183,7 +183,7 @@ sudo rm data/registry
 sudo ./filebeat -e -c filebeat.yml -d "publish"
 ```
 如果Filebeat在开始处理事件之前需要等待Logstash重新加载配置文件，则可能会有点延时。在Logstash应用了```grok```模式后，事件将具有以下JSON表示：
-```
+```json
 {
         "request" => "/presentations/logstash-monitorama-2013/images/kibana-search.png",
           "agent" => "\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.77 Safari/537.36\"",
@@ -231,7 +231,7 @@ sudo ./filebeat -e -c filebeat.yml -d "publish"
 由于过滤器是按序处理的，在配置文件中请确保```geoip```部分在```grok```部分之后，并且都在```filter```内部。
 
 当你完成这步后，```first-pipeline.conf```内容应该如下：
-```
+```yaml
 input {
     beats {
         port => "5044"
@@ -254,7 +254,7 @@ output {
 sudo ./filebeat -e -c filebeat.yml -d "publish"
 ```
 请注意，现在的事件已包含了地理位置信息了：
-```
+```json
 {
         "request" => "/presentations/logstash-monitorama-2013/images/kibana-search.png",
           "agent" => "\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.77 Safari/537.36\"",
@@ -284,7 +284,7 @@ sudo ./filebeat -e -c filebeat.yml -d "publish"
 >你可以在自己的主机上运行Elasticsearch，也可以在Elastic Cloud上使用我们托管的Elasticsearch Service。 AWS和GCP均提供Elasticsearch服务。 [免费试用Elasticsearch服务](https://www.elastic.co/cloud/elasticsearch-service/signup)。
 
 Logstash管道可以将数据索引到Elasticsearch集群中。编辑```first-pipeline.conf```配置文件，将输出部分替换为如下内容：
-```
+```yaml
 output {
     elasticsearch {
         hosts => [ "localhost:9200" ]
@@ -294,7 +294,7 @@ output {
 在此配置中，Logstash使用http协议与Elasticsearch建立连接。上面的示例假定Logstash与Elasticsearch运行在同一台主机中。你可以通过```hosts```配置项进行类似```hosts => [ "es-machine:9092" ]```的配置去连接一个远端运行的Elasticsearch实例。
 
 到这里，```first-pipeline.conf```配置文件中input、filter、output都有了适当的配置，配置内容如下：
-```
+```yaml
 input {
     beats {
         port => "5044"
@@ -329,7 +329,7 @@ curl -XGET 'localhost:9200/logstash-$DATE/_search?pretty&q=response=200'
 >索引名中的日期是基于UTC的，并不是Logstash运行所在的时区。如果查询时返回```index_not_found_exception```，请确保```logstash-$DATA```是正确的索引名。查看当前可用索引列表，可用此进行查询：```curl 'localhost:9200/_cat/indices?v'```。
 
 你会得到多个返回的结果。类似：
-```
+```json
 {
   "took": 50,
   "timed_out": false,
@@ -404,7 +404,7 @@ curl -XGET 'localhost:9200/logstash-$DATE/_search?pretty&q=response=200'
 curl -XGET 'localhost:9200/logstash-$DATE/_search?pretty&q=geoip.city_name=Buffalo'
 ```
 数据中有少量日志条目来自Buffalo，查询结果如下：
-```
+```json
 {
   "took": 9,
   "timed_out": false,
