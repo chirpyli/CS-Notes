@@ -96,11 +96,12 @@ doc/**/*.pdf
 - ```git push origin --delete <BranchName>```： 删除远程分支 
 
 #### 其他命令
-- ```git add```：文件添加到缓存
-- ```git add .```：添加项目的所有文件
-- ```git status```：查看当前状态
-- ```git commit -m"注释"```：将缓存区内容添加到仓库
-
+- `git add`：文件添加到缓存
+- `git add .`：添加项目的所有文件
+- `git status`：查看当前状态
+- `git commit -m"注释"`：将缓存区内容添加到仓库
+- `git mv file_from file_to`： 重命名某个文件
+- `git remote rename old_name new_name`： 远程仓库重命名
 
 >参考：     
 [Git官网](https://git-scm.com/)     
