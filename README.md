@@ -5,9 +5,11 @@ Computer science learning notes.
 ## Content
 
 
+### C
+- [Linux进程间通信——管道](./C/Linux进程间通信/管道.md)
 
-
-
+### C++
+- [C++笔试题](./C++/C++笔试题/C++笔试题.md)
 
 ### MQ
 - [Erlang安装](./MQ/Erlang安装.md)
