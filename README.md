@@ -10,6 +10,7 @@ Computer science learning notes.
 
 ### C++
 - [C++笔试题](./C++/C++笔试题/C++笔试题.md)
+- [C++PrimerPlus笔记](./C++/C++PrimerPlus/C++PrimerPlus笔记.md)
 
 ### MQ
 - [Erlang安装](./MQ/Erlang安装.md)
