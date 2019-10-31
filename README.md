@@ -7,6 +7,7 @@ Computer science learning notes.
 
 ### C
 - [Linux进程间通信——管道](./C/Linux进程间通信/管道.md)
+- [Linux进程间通信——信号](./C/Linux进程间通信/信号.md)
 
 ### C++
 - [C++笔试题](./C++/C++笔试题/C++笔试题.md)
