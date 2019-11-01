@@ -16,7 +16,8 @@ Computer science learning notes.
 
 ### Linux
 - [Linux定时执行任务crontab](./Linux/Linux定时执行任务crontab.md)
-
+- [Linux下进程管理工具supervisor](./Linux/Linux下进程管理工具supervisor.md) 
+- [Shell编程](./Linux/Shell编程.md)
 ### MQ
 - [Erlang安装](./MQ/Erlang安装.md)
 - [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
