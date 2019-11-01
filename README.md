@@ -8,10 +8,14 @@ Computer science learning notes.
 ### C
 - [Linux进程间通信——管道](./C/Linux进程间通信/管道.md)
 - [Linux进程间通信——信号](./C/Linux进程间通信/信号.md)
+- [多线程编程](./C/多线程编程.md)
 
 ### C++
 - [C++笔试题](./C++/C++笔试题/C++笔试题.md)
 - [C++PrimerPlus笔记](./C++/C++PrimerPlus/C++PrimerPlus笔记.md)
+
+### Linux
+- [Linux定时执行任务crontab](./Linux/Linux定时执行任务crontab.md)
 
 ### MQ
 - [Erlang安装](./MQ/Erlang安装.md)
@@ -28,3 +32,4 @@ Computer science learning notes.
 
 ### Tools
 - [Git基础篇](./Tools/Git基础篇.md)
+- [Docker更换为国内镜像](./Tools/Docker更换为国内镜像.md)
