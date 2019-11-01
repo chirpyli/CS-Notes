@@ -25,3 +25,16 @@ void printplus(T1 a, T2 b) {
 - 友元成员函数
 
 代码示例[friend.cpp](./friend.cpp)
+
+
+### 异常机制
+C++异常是对程序运行过程中发生的异常情况的一种响应，异常提供了将控制权从程序的一部分传递到另一部分的途径。在C++中，主要用`try-catch`捕获异常。
+
+代码示例[abort.cpp](./abort.cpp)
+
+C++11中新增了一个关键字`noexcept`指出函数不会引发异常：
+```c++
+double marm() noexcept;     //marm() doesn't throw an exception.
+```
+当使用这个关键字时，等于是程序员向编译器做出了承诺，放心吧，这个函数不会引发异常。
+
