@@ -75,7 +75,7 @@ doc/**/*.pdf
 
 #### git diff
 - ```git diff```：查看工作区的最新改动，即工作区与提交暂存区的差异
--  ```git diff --cached```：查看已缓存的改动，即提交暂存区与版本库中的差异
+- ```git diff --cached```：查看已缓存的改动，即提交暂存区与版本库中的差异
 - ```git diff HEAD```：查看工作区与HEAD（当前工作分支）的差异
 - ```git diff --stat```：显示摘要而非整个 diff：
 >HEAD ：代表版本库中最近一次提交     
