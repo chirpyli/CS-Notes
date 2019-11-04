@@ -4,6 +4,11 @@ Computer science learning notes.
 
 ## Content
 
+### Linux
+- [Linux定时执行任务crontab](./Linux/Linux定时执行任务crontab.md)
+- [Linux下进程管理工具supervisor](./Linux/Linux下进程管理工具supervisor.md) 
+- [Shell编程](./Linux/Shell编程.md)
+- [Linux下 core dump](./Linux/Linux下core\ dump.md)
 
 ### C
 - [Linux进程间通信——管道](./C/Linux进程间通信/管道.md)
@@ -14,10 +19,16 @@ Computer science learning notes.
 - [C++笔试题](./C++/C++笔试题/C++笔试题.md)
 - [C++PrimerPlus笔记](./C++/C++PrimerPlus/C++PrimerPlus笔记.md)
 
-### Linux
-- [Linux定时执行任务crontab](./Linux/Linux定时执行任务crontab.md)
-- [Linux下进程管理工具supervisor](./Linux/Linux下进程管理工具supervisor.md) 
-- [Shell编程](./Linux/Shell编程.md)
+### Rust
+- [rust learning resource](./Rust/rust-learning-resource.md)
+- [RefCell和内部可变性](./Rust/RefCell和内部可变性.md)
+- [Rust关联类型与默认类型参数](./Rust/Rust关联类型与默认类型参数.md)
+- [Rust写时复制](./Rust/Rust写时复制.md)
+- [Rust完全限定语法与消歧义：调用相同名称的方法](./Rust/Rust完全限定语法与消歧义：调用相同名称的方法.md)
+- [Rust更换Crates源](./Rust/Rust更换Crates源)
+- [Rust生命周期bound用于泛型的引用](./Rust/Rust生命周期bound用于泛型的引用.md)
+- [对Rust所有权、借用及生命周期的理解](./Rust/对Rust所有权、借用及生命周期的理解.md)
+
 ### MQ
 - [Erlang安装](./MQ/Erlang安装.md)
 - [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
