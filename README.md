@@ -14,6 +14,7 @@ Computer science learning notes.
 - [Linux进程间通信——管道](./C/Linux进程间通信/管道.md)
 - [Linux进程间通信——信号](./C/Linux进程间通信/信号.md)
 - [多线程编程](./C/多线程编程.md)
+- [epoll边缘触发与水平触发](./C/epoll边缘触发与水平触发.md)
 
 ### C++
 - [C++笔试题](./C++/C++笔试题/C++笔试题.md)
