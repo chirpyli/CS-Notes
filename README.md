@@ -8,7 +8,7 @@ Computer science learning notes.
 - [Linux定时执行任务crontab](./Linux/Linux定时执行任务crontab.md)
 - [Linux下进程管理工具supervisor](./Linux/Linux下进程管理工具supervisor.md) 
 - [Shell编程](./Linux/Shell编程.md)
-- [Linux下 core dump](./Linux/Linux下core\ dump.md)
+- [Linux下core dump](./Linux/Linux下core_dump.md)
 
 ### C
 - [Linux进程间通信——管道](./C/Linux进程间通信/管道.md)
