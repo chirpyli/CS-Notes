@@ -1,0 +1,13 @@
+appenders:
+  # An appender named "stdout" that writes to stdout
+  stdout:
+    kind: console
+    encoder:
+      pattern: "{m}{n}"
+      # pattern: "[{d(%H:%M:%S%.6f)}] {m}{n}"
+
+# Set the default logging level to "info" and attach the "stdout" appender to the root
+root:
+  level: info
+  appenders:
+    - stdout

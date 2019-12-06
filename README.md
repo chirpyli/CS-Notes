@@ -30,6 +30,9 @@ Computer science learning notes.
 - [Rust生命周期bound用于泛型的引用](./Rust/Rust生命周期bound用于泛型的引用.md)
 - [对Rust所有权、借用及生命周期的理解](./Rust/对Rust所有权、借用及生命周期的理解.md)
 
+### 密码学
+- [分组密码及AES算法初识](./Crypto/分组密码及AES算法初识.md)        
+
 ### MQ
 - [Erlang安装](./MQ/Erlang安装.md)
 - [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
