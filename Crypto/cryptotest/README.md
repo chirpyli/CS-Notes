@@ -13,9 +13,9 @@
 另外测试了硬件加速情况下加解密性能，目前主流CPU已经实现了AES-NI（全称是：Advanced Encryption Standard New Instructions
 ），这是针对AES加密算法的硬件加解密CPU指令集。
 
-对比AES-NI对比没有用硬件加速快8~10倍左右，10M耗时70~100ms左右。
+对比AES-NI对比没有用硬件加速快8到10倍左右，10M耗时70到100ms左右。
 
-补充一下，这里测试使用的是AES-CTR模式，相比其它分组模式，这种模式是应用中较为推荐的。
+补充一下，这里测试使用的是CTR模式，相比其它分组模式，这种模式是应用中较为推荐的。
 
 #### Blowfish
 因此密码库没有实现Blowfish的CTR模式，所以没有进行Blowfish与AES的性能对比测试。rust-crypto库实现了Blowfish核心的`encrypt_block(&self, input: &[u8], output: &mut [u8])`函数，应用上，只需要按CTR模式的工作原理编写即可，代码不是很复杂。

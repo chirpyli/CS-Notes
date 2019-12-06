@@ -13,24 +13,28 @@
 - CTR模式:CounTeR mode (计数器模式)         
 
 #### ECB模式
-ECB模式最简单，可以快速理解分组密码是怎么回事，但最不推荐使用。
+ECB模式最简单，可以快速理解分组密码是怎么回事，但最不推荐使用。         
 ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/ECB_encryption.svg/601px-ECB_encryption.svg.png)     
-![image](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/ECB_decryption.svg/601px-ECB_decryption.svg.png)
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/ECB_decryption.svg/601px-ECB_decryption.svg.png)                 
+
 可以看到就是将非常长的原文分割成一组组128bit块，对每块进行加密，再按顺序将加密后的分组密文组装在一起，形成最终密文。这里最大的问题是相同的原文片段产生相同的密文，这是很危险的，所以这种模式不推荐使用。
 
 
 #### CBC模式
 这种模式克服了ECB模式的缺点，加密过程为将当前分组明文与上一分组密文异或后再块加密得到当前分组密文，解密过程为将当前分组密文块解密后与上一分组密文异火得到当前分组明文。
+
 ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/CBC_encryption.svg/601px-CBC_encryption.svg.png)
 ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/CBC_decryption.svg/601px-CBC_decryption.svg.png)     
 
 #### CFB模式
 CFB模式与CBC模式有点类似，加密过程为将上一分组密文块加密后与当前分组明文异或生成当前分组密文，解密过程为上一分组密文块加密后与当前分组密文异或后解密为当前分组明文。
 
-![image](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/CFB_encryption.svg/601px-CFB_encryption.svg.png)  ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/CFB_decryption.svg/601px-CFB_decryption.svg.png)   
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/CFB_encryption.svg/601px-CFB_encryption.svg.png)  
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/CFB_decryption.svg/601px-CFB_decryption.svg.png)   
 
 #### OFB模式
 加解密过程直接看下面图吧
+
 ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/OFB_encryption.svg/601px-OFB_encryption.svg.png)
 ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/OFB_decryption.svg/601px-OFB_decryption.svg.png)
 
@@ -39,6 +43,7 @@ CFB模式与CBC模式有点类似，加密过程为将上一分组密文块加�
 这个模式推荐使用，该模式的一个非常大的优点是加解密过程皆可以并行，可以使用GPU进行加速。（可以用CUDA编写AES加速）
 
 通过Nonce随机数（等同于上面的IV）确定计数器的基数，之后每个分组计数器Counter加1。CTR模式中加解密都是对每个分组的计数器Counter进行块加密，之后，加密过程为与该分组明文异或得到该分组的密文，解密过程为与该分组密文异火得到该分组明文，非常好理解（需要注意的是这里解密过程中用的是块加密而不是块解密）。
+
 ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/CTR_encryption_2.svg/601px-CTR_encryption_2.svg.png)
 ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/CTR_decryption_2.svg/601px-CTR_decryption_2.svg.png)
 
@@ -46,6 +51,7 @@ CFB模式与CBC模式有点类似，加密过程为将上一分组密文块加�
 
 #### 不同分组模式对比
 对比如下图所示：
+
 ![image](../images/blockmode_compare.png)   
 
 

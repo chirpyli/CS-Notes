@@ -29,6 +29,7 @@ Computer science learning notes.
 - [Rust更换Crates源](./Rust/Rust更换Crates源)
 - [Rust生命周期bound用于泛型的引用](./Rust/Rust生命周期bound用于泛型的引用.md)
 - [对Rust所有权、借用及生命周期的理解](./Rust/对Rust所有权、借用及生命周期的理解.md)
+- [Rust实现的常用密码学库](./Rust/Rust实现的常用密码学库)       
 
 ### 密码学
 - [分组密码及AES算法初识](./Crypto/分组密码及AES算法初识.md)        
