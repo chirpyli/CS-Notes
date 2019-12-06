@@ -18,7 +18,9 @@ Computer science learning notes.
 
 ### C++
 - [C++笔试题](./C++/C++笔试题/C++笔试题.md)
-- [C++PrimerPlus笔记](./C++/C++PrimerPlus/C++PrimerPlus笔记.md)
+- [C++PrimerPlus笔记](./C++/C++PrimerPlus/C++PrimerPlus笔记.md) 
+- [boost安装](./C++/Boost/boost安装.md) 
+
 
 ### Rust
 - [rust learning resource](./Rust/rust-learning-resource.md)
