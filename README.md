@@ -1,8 +1,14 @@
 # CS-Notes
-Computer science learning notes.
+Lisheng Computer science learning.
 
 
 ## Content
+
+### 数据结构及算法
+- [data structure and algorithm](https://github.com/superLish/data-structure)
+
+### 设计模式
+- [Design pattern](https://github.com/superLish/design-pattern)
 
 ### Linux
 - [Linux定时执行任务crontab](./Linux/Linux定时执行任务crontab.md)
@@ -19,6 +25,8 @@ Computer science learning notes.
 ### C++
 - [C++笔试题](./C++/C++笔试题/C++笔试题.md)
 - [C++PrimerPlus笔记](./C++/C++PrimerPlus/C++PrimerPlus笔记.md) 
+
+#### Boost
 - [boost安装](./C++/Boost/boost安装.md) 
 - [boost库noncopyable](./C++/Boost/boost库noncopyable.md)       
 
@@ -34,11 +42,18 @@ Computer science learning notes.
 - [Rust实现的常用密码学库](./Rust/Rust实现的常用密码学库)       
 
 ### 密码学
-- [分组密码及AES算法初识](./Crypto/分组密码及AES算法初识.md)        
+- [分组密码及AES算法初识](./Crypto/分组密码及AES算法初识.md)  
+- [AES加密算法工作原理](./Crypto/AES加密算法原理.md)      
 
 ### MQ
 - [Erlang安装](./MQ/Erlang安装.md)
 - [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
+
+
+### Tools
+- [Git基础篇](./Tools/Git基础篇.md)
+- [Docker更换为国内镜像](./Tools/Docker更换为国内镜像.md)
+
 
 ### ELK日志平台
 - [日志库的设计思路](./ELK日志/日志库的设计思路.md)       
@@ -49,9 +64,6 @@ Computer science learning notes.
 - [使用Logstash解析日志](./ELK平台/使用Logstash解析日志.md)
 - [Elasticsearch定时删除索引](./ELK平台/Elasticsearch定时删除索引.md)
 
-### Tools
-- [Git基础篇](./Tools/Git基础篇.md)
-- [Docker更换为国内镜像](./Tools/Docker更换为国内镜像.md)
 
 ### Matlab
 - [matlab笔记](./Matlab/matlab笔记.md)
