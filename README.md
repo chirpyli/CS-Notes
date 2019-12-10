@@ -32,7 +32,7 @@ Lisheng Computer science learning.
 - [boost库log设计概述](./C++/Boost/boost库log设计概述.md)
 - [boost库log日志过滤](./C++/Boost/boost库log日志过滤.md)
 - [boost库log输出到文件](./C++/Boost/boost库log输出到文件.md)
-
+- [boost库log之logger](./C++/Boost/boost库log之logger.md)   
 
 ### Rust
 - [rust learning resource](./Rust/rust-learning-resource.md)
