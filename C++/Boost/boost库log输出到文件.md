@@ -108,22 +108,22 @@ int main() {
 }
 ```
 注释一：keywords
-|keywords|说明|
-|-----|----|
-|file_name|The keyword allows to pass log file name the rotating file stream methods|
-|rotation_size|The keyword allows to pass maximum log file size to the file sink|
-|time_based_rotation|The keyword allows to pass time-based file rotation predicate to the file sink backend|
-|format|The keyword for passing format specifiers to functions|
+keywords|说明
+-----|----
+file_name|The keyword allows to pass log file name the rotating file stream methods         
+rotation_size|The keyword allows to pass maximum log file size to the file sink     
+time_based_rotation|The keyword allows to pass time-based file rotation predicate to the file sink backend          
+format|The keyword for passing format specifiers to functions
 
 
 注释二：add_common_attributes()
 The function adds commonly used attributes to the logging system. Specifically, the following attributes are registered globally:
-|attributes|说明|
-|-----|-----|
-|LineID |logging records counter with value type <tt>unsigned int</tt>|
-|TimeStamp|local time generator with value type <tt>boost::posix_time::ptime</tt>|
- |ProcessID|current process identifier with value type <tt>attributes::current_process_id::value_type</tt>|
-|ThreadID|in multithreaded builds, current thread identifier with value type <tt>attributes::current_thread_id::value_type</tt>|
+attributes|说明
+-----|-----
+LineID |logging records counter with value type <tt>unsigned int</tt>       
+TimeStamp|local time generator with value type <tt>boost::posix_time::ptime</tt>
+ ProcessID|current process identifier with value type <tt>attributes::current_process_id::value_type</tt>       
+ThreadID|in multithreaded builds, current thread identifier with value type <tt>attributes::current_thread_id::value_type</tt>      
 
 
 ### boost log 相关源码
@@ -171,8 +171,8 @@ BOOST_LOG_CLOSE_NAMESPACE // namespace log
 #endif // BOOST_LOG_KEYWORDS_FORMAT_HPP_INCLUDED_
 ```
 
-下面这段是common_attributes.hpp源码
-```c
+下面这段是`common_attributes.hpp`源码
+```c++
 /*
  *          Copyright Andrey Semashev 2007 - 2015.
  * Distributed under the Boost Software License, Version 1.0.
@@ -252,8 +252,8 @@ BOOST_LOG_CLOSE_NAMESPACE // namespace log
 #endif // BOOST_LOG_UTILITY_SETUP_COMMON_ATTRIBUTES_HPP_INCLUDED_
 ```
 
-以下是default_attribute_names.hpp源代码，接上一个源码看
-```c
+以下是`default_attribute_names.hpp`源代码，接上一个源码看
+```c++
 /*
  *          Copyright Andrey Semashev 2007 - 2015.
  * Distributed under the Boost Software License, Version 1.0.
