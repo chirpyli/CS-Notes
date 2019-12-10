@@ -1,18 +1,9 @@
-<head>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            inlineMath: [['$','$']]
-            }
-        });
-    </script>
-</head>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
 DH密钥交换是一种安全协议，它可以让双方在不安全的信道上创建一个密钥。双方互相发送的数据就算被第三方知晓，也无法知道加密信息的密钥。
 
 **其解决问题的主要思想**可以用下图来解释：
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190530134008494.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NfbGlzaGVuZw==,size_16,color_FFFFFF,t_70)
 
 Alice和Bob想要协商出一个只有它们两人知道的颜色，不能让第三方知道，怎么办呢？解决办法如下：
@@ -25,16 +16,17 @@ Alice和Bob想要协商出一个只有它们两人知道的颜色，不能让第
 7. 至此，Alice和Bob各自拥有了只有它们两人知道的秘密颜色，且秘密颜色是相同的。
 
 这里的关键是，混合后的颜色，人们无法知晓是由哪两种颜色混合而成的。由此，很容易想到数学难题，离散对数问题。**数学描述如下：**
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190530134339996.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NfbGlzaGVuZw==,size_16,color_FFFFFF,t_70)
->这里，$a$只有Alice知道，$b$只有Bob知道，$g,p$是公开的，$K$是最终计算出的共享密钥。
+>这里，`a`只有Alice知道，`b`只有Bob知道，`g,p`是公开的，`K`是最终计算出的共享密钥。
 
 **一般描述如下：**
-1. Alice和Bob协商一个有限循环群$G$和它的一个生成元$g$，一个大素数$p$;
-2. Alice生成一个随机数$a$，计算$A=g^a mod\ p$，将$A$发送给Bob；
-3. Bob生成一个随机数$b$，计算$B=g^b mod\ p$，将$B$发送给Alice；
-4. Alice计算$K=B^a mod\ p=(g^b)^a mod\ p$，得到共享密钥$K$；
-5. Bob计算$K=A^b\ mod\ p=(g^a)^b\ mod\ p$，得到共享密钥$K$；
->$(g^b)^a=(g^a)^b$因为群是乘法交换的，涉及到数论及代数的内容。Alice和Bob同时协商出$K$，作为共享密钥。
+1. Alice和Bob协商一个有限循环群`G`和它的一个生成元`g`，一个大素数`p`;
+2. Alice生成一个随机数`a`，计算$A=g^a mod\ p$，将`A`发送给Bob；
+3. Bob生成一个随机数`b`，计算$B=g^b mod\ p$，将`B`发送给Alice；
+4. Alice计算$K=B^a mod\ p=(g^b)^a mod\ p$，得到共享密钥`K`；
+5. Bob计算$K=A^b\ mod\ p=(g^a)^b\ mod\ p$，得到共享密钥`K`；
+>$(g^b)^a=(g^a)^b$因为群是乘法交换的，涉及到数论及代数的内容。Alice和Bob同时协商出`K`，作为共享密钥。
 
 最后，**安全性问题**，DH密钥交换可以防窃听（即，你知道我们交换的数据也没关系），但是DH本身并没有提供通讯双方的身份验证服务（正确交换的前提是，Alice必须确保对方是Bob），无法抵御中间人攻击。
 

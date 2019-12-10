@@ -34,25 +34,32 @@ AES128算法流程如下图所示：
 
 #### SubBytes（字节替代）
 字节替代，就是依据S盒（Subtitution Box）把明文块的每一个字节都替代成另外一个字节，`b[i,j] = S(a[i,j])`， 实现时直接查表即可。
+
 ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/AES-SubBytes.svg/320px-AES-SubBytes.svg.png) 
 
 #### ShiftRows（行移位）
 
-![image](https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/AES-ShiftRows.svg/320px-AES-ShiftRows.svg.png)      这一步就像图中所描述的：第一行不变，第二行循环左移1个字节，第三行循环左移2个字节，第四行循环左移3个字节。
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/AES-ShiftRows.svg/320px-AES-ShiftRows.svg.png)      
+
+这一步就像图中所描述的：第一行不变，第二行循环左移1个字节，第三行循环左移2个字节，第四行循环左移3个字节。
 
 #### MixColumns（列混淆）
-输入数组的每一列要和一个常量矩阵做矩阵相乘，得到对应的输出列。![image](../images/MixColumn.png)
+输入数组的每一列要和一个常量矩阵做矩阵相乘，得到对应的输出列。
+![image](../images/MixColumn.png)
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/AES-MixColumns.svg/320px-AES-MixColumns.svg.png)     
 
 #### AddRoundKey（轮密钥加）
 128bit的轮密钥同样被排列成4X4的矩阵，输出值`b[i,j] = a[i,j] XOR k[i,j]`。       
+
 ![image](https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/AES-AddRoundKey.svg/320px-AES-AddRoundKey.svg.png)           
 
 
 >参考资料：     
 [Advanced Encryption Standard](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)    
 [FIPS 197, Advanced Encryption Standard (AES)](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf)          
+[并行加密算法系列（三）之AES on Intel CPU](https://blog.csdn.net/Canhui_WANG/article/details/78785658)
+[并行加密算法系列（四）之AES on Nvidia GPU](https://blog.csdn.net/Canhui_WANG/article/details/78785675)
 
 ---
 >最后应用AES加密算法时，遇到了性能瓶颈，需要提高AES加密算法的吞吐量，目前有2个思路，一个是硬件加速，AES-NI，但这个加速目前测的最多能提升10倍左右，吞吐量还是不够，还有一个思路是GPU加速，在CTR模式下进行并行计算加速，这个目前还没有实现并进行测试，可参考这篇[GPU accelerated AES in counter mode](https://www.andrew.cmu.edu/user/aspratt/accelerated_aes/)。

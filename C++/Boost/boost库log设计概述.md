@@ -7,8 +7,8 @@
 	
 boost log支持以下配置宏，只列出一些常用的，如下表所示：
 |Macro name|Effect |
-|-------|-------|
-|BOOST_LOG_DYN_LINK |If defined in user code, the library will assume the binary is built as a dynamically loaded library ("dll" or "so"). Otherwise it is assumed that the library is built in static mode. This macro must be either defined or not defined for all translation units of user application that uses logging. This macro can help with auto-linking on platforms that support it. |
+|--|--|
+| BOOST_LOG_DYN_LINK | If defined in user code, the library will assume the binary is built as a dynamically loaded library ("dll" or "so"). Otherwise it is assumed that the library is built in static mode. This macro must be either defined or not defined for all translation units of user application that uses logging. This macro can help with auto-linking on platforms that support it. |
 |BOOST_ALL_DYN_LINK |Same as BOOST_LOG_DYN_LINK but also affects other Boost libraries the same way. |
 |BOOST_USE_WINAPI_VERSION |Affects compilation of both the library and user's code. This macro is Windows-specific. Selects the target Windows version for various Boost libraries, including Boost.Log. Code compiled for a particular Windows version will likely fail to run on the older Windows versions, but may improve performance because of using newer OS features. The macro is expected to have an integer value equivalent to _WIN32_WINNT. |
 |BOOST_LOG_NO_THREADS |If defined, disables multithreading support. Affects the compilation of both the library and users' code. The macro is automatically defined if no threading support is detected. |
@@ -43,22 +43,6 @@ namespace keywords = boost::log::keywords;
 - **日志格式化**：决定日志记录输出的实际格式。
 - **日志核心**：维护者日志源、日志槽、日志过滤器等之间的关系的一个全局中的实体。主要在初始化logging library时用到。
 
-为了不理解错误，这里附加官方英文解释如下所示：
-|概念或术语|定义或解释|
-|-------|-----|
-|Log record|A single bundle of information, collected from the user's application, that is a candidate to be put into the log. In a simple case the log record will be represented as a line of text in the log file after being processed by the logging library.|
-|**Attribute**|An "attribute" is a piece of meta-information that can be used to specialize a log record. In Boost.Log attributes are represented by function objects with a specific interface, which return the actual attribute value when invoked.|
-|**Attribute value**|Attribute values are the actual data acquired from attributes. This data is attached to the specific log record and processed by the library. Values can have different types (integers, strings and more complex, including user defined types). Some examples of attribute values: current time stamp value, file name, line number, current scope name, etc.. Attribute values are enveloped in a type erasing wrapper, so the actual type of the attribute is not visible in the interface. The actual (erased) type of the value is sometimes called the stored type.|
-|(Attribute) value visitation|A way of processing the attribute value. This approach involves a function object (a visitor) which is applied to the attribute value. The visitor should know the stored type of the attribute value in order to process it.|
-|(Attribute) value extraction|A way of processing the attribute value when the caller attempts to obtain a reference to the stored value. The caller should know the stored type of the attribute value in order to be able to extract it.|
-|**Log sink**|A target, to which all log records are fed after being collected from the user's application. The sink defines where and how the log records are going to be stored or processed.|
-|**Log source**|An entry point for the user's application to put log records to. In a simple case it is an object (logger) which maintains a set of attributes that will be used to form a log record upon the user's request. However, one can surely create a source that would emit log records on some side events (for example, by intercepting and parsing console output of another application).|
-|**Log filter**|A predicate that takes a log record and tells whether this record should be passed through or discarded. The predicate typically forms its decision based on the attribute values attached to the record.|
-|**Log formatter**|A function object that generates the final textual output from a log record. Some sinks, e.g. a binary logging sink, may not need it, although almost any text-based sink would use a formatter to compose its output.|
-|**Logging core**|The global entity that maintains connections between sources and sinks and applies filters to records. It is mainly used when the logging library is initialized.|
-|RTTI|Run-time type information. This is the C++ language support data structures required for dynamic_cast and typeid operators to function properly.|
-|TLS|Thread-local storage. The concept of having a variable that has independent values for each thread that attempts to access it.|
-|i18n|Internationalization. The ability to manipulate wide characters.|
 
 ### boost log 设计概述
 #### 设计概述
@@ -127,6 +111,4 @@ boost log支持自定义 sink ，可以实现一条日志信息复制分流到�
 - 对于不同的输出方式，boost log提供了一些现成的sink backend ，例如输出到 Windows事件日志、调试器、Linux syslog接口、文本文件等。
 
 
->参考文档：     
-[boost.log](http://www.boost.org/doc/libs/1_64_0/libs/log/doc/html/index.html)      
-[C++ 日志库 boost::log 以及 glog 的对比](https://yq.aliyun.com/articles/2620?spm=5176.100239.blogcont47592.32.THmy2q)       
+>更多请参考[boost.log](http://www.boost.org/doc/libs/1_64_0/libs/log/doc/html/index.html)。           

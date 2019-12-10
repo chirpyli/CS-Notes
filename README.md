@@ -44,6 +44,7 @@ Lisheng Computer science learning.
 ### 密码学
 - [分组密码及AES算法初识](./Crypto/分组密码及AES算法初识.md)  
 - [AES加密算法工作原理](./Crypto/AES加密算法原理.md)      
+- [Diffie-Hellman密钥交换](./Crypto/Diffie-Hellman密钥交换.md)
 
 ### MQ
 - [Erlang安装](./MQ/Erlang安装.md)
