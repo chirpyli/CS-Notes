@@ -61,6 +61,8 @@ Lisheng Computer science learning.
 ### Tools
 - [Git基础篇](./Tools/Git基础篇.md)
 - [Valgrind安装与使用](./Tools/Valgrind安装与使用.md)
+- [性能分析工具之Valgrind简析](./Tools/性能分析工具之Valgrind简析.md)
+- [Dr.Memory内存检测工具](./Tools/Dr.Memory内存检测工具.md)
 - [代码统计工具cloc](./Tools/代码统计工具.md)
 - [如何让VisualStudioCode打开文件始终在新标签页打开](./Tools/如何让VisualStudioCode打开文件始终在新标签页打开.md)   
 
