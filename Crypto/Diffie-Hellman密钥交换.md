@@ -1,5 +1,3 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 DH密钥交换是一种安全协议，它可以让双方在不安全的信道上创建一个密钥。双方互相发送的数据就算被第三方知晓，也无法知道加密信息的密钥。
 
 **其解决问题的主要思想**可以用下图来解释：
@@ -22,11 +20,11 @@ Alice和Bob想要协商出一个只有它们两人知道的颜色，不能让第
 
 **一般描述如下：**
 1. Alice和Bob协商一个有限循环群`G`和它的一个生成元`g`，一个大素数`p`;
-2. Alice生成一个随机数`a`，计算$A=g^a mod\ p$，将`A`发送给Bob；
-3. Bob生成一个随机数`b`，计算$B=g^b mod\ p$，将`B`发送给Alice；
-4. Alice计算$K=B^a mod\ p=(g^b)^a mod\ p$，得到共享密钥`K`；
-5. Bob计算$K=A^b\ mod\ p=(g^a)^b\ mod\ p$，得到共享密钥`K`；
->$(g^b)^a=(g^a)^b$因为群是乘法交换的，涉及到数论及代数的内容。Alice和Bob同时协商出`K`，作为共享密钥。
+2. Alice生成一个随机数`a`，计算`A = g^a mod p`，将`A`发送给Bob；
+3. Bob生成一个随机数`b`，计算`B = g^b mod p`，将`B`发送给Alice；
+4. Alice计算`K = B^a mod p = (g^b)^a mod p`，得到共享密钥`K`；
+5. Bob计算`K = A^b mod p = (g^a)^b mod p`，得到共享密钥`K`；
+>`(g^b)^a = (g^a)^b`因为群是乘法交换的，涉及到数论及代数的内容。Alice和Bob同时协商出`K`，作为共享密钥。
 
 最后，**安全性问题**，DH密钥交换可以防窃听（即，你知道我们交换的数据也没关系），但是DH本身并没有提供通讯双方的身份验证服务（正确交换的前提是，Alice必须确保对方是Bob），无法抵御中间人攻击。
 

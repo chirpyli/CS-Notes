@@ -5,15 +5,11 @@
 	
 ### boost log 配置和编译
 	
-boost log支持以下配置宏，只列出一些常用的，如下表所示：
-|Macro name|Effect |
-|--|--|
-| BOOST_LOG_DYN_LINK | If defined in user code, the library will assume the binary is built as a dynamically loaded library ("dll" or "so"). Otherwise it is assumed that the library is built in static mode. This macro must be either defined or not defined for all translation units of user application that uses logging. This macro can help with auto-linking on platforms that support it. |
-|BOOST_ALL_DYN_LINK |Same as BOOST_LOG_DYN_LINK but also affects other Boost libraries the same way. |
-|BOOST_USE_WINAPI_VERSION |Affects compilation of both the library and user's code. This macro is Windows-specific. Selects the target Windows version for various Boost libraries, including Boost.Log. Code compiled for a particular Windows version will likely fail to run on the older Windows versions, but may improve performance because of using newer OS features. The macro is expected to have an integer value equivalent to _WIN32_WINNT. |
-|BOOST_LOG_NO_THREADS |If defined, disables multithreading support. Affects the compilation of both the library and users' code. The macro is automatically defined if no threading support is detected. |
-
-
+boost log支持以下配置宏，只列出一些常用的，如下所示：
+- BOOST_LOG_DYN_LINK —— If defined in user code, the library will assume the binary is built as a dynamically loaded library ("dll" or "so"). Otherwise it is assumed that the library is built in static mode. This macro must be either defined or not defined for all translation units of user application that uses logging. This macro can help with auto-linking on platforms that support it. 
+- BOOST_ALL_DYN_LINK —— Same as BOOST_LOG_DYN_LINK but also affects other Boost libraries the same way. 
+- BOOST_USE_WINAPI_VERSION —— Affects compilation of both the library and user's code. This macro is Windows-specific. Selects the target Windows version for various Boost libraries, including Boost.Log. Code compiled for a particular Windows version will likely fail to run on the older Windows versions, but may improve performance because of using newer OS features. The macro is expected to have an integer value equivalent to _WIN32_WINNT. 
+- BOOST_LOG_NO_THREADS —— If defined, disables multithreading support. Affects the compilation of both the library and users' code. The macro is automatically defined if no threading support is detected. 
 
 有一点要注意：如果你的程序工程中由多个模块构成（例如，由一个.exe和多个.dll构成），当你使用boost log
 库时必须built as a shared object。如果只是单个模块（例如：单个.exe或单个.dll）则可以build the library as a static library. 
