@@ -14,14 +14,16 @@ pub fn aes_instance() {
         info!("system support aesni!");
     }
 
+    let mut e = EncryptConn::default();
+    e.testcrypt(10);
 
-    let mut aes256 = Aes256::default();
-    aes256.testcrypt(10);
+    // let mut aes256 = Aes256::default();
+    // aes256.testcrypt(10);
 
-    let mut aes128 = Aes128::default();
-    aes128.testcrypt(10);
+    // let mut aes128 = Aes128::default();
+    // aes128.testcrypt(10);
 
-    test_aesni(10);
+    // test_aesni(10);
 }
 
 fn test_aesni(size :usize) {
@@ -51,6 +53,59 @@ fn test_aesni(size :usize) {
     assert_eq!(packet, plain);
 }
 
+
+struct EncryptConn {
+    encoder: Box<Encryptor>,
+    decoder: Box<Decryptor>,
+}
+
+ impl Default for EncryptConn {
+     fn default() -> Self {
+        let mut rng = rand::thread_rng(); 
+        let mut key = [0u8; 32];
+        rng.fill_bytes(&mut key);
+        let iv = vec![0u8; 16];
+
+        if crypto::util::supports_aesni() {
+            let mut algo = AesNiEncryptor::new(KeySize::KeySize256, &key);
+            let mut ctr1 = CtrMode::new(algo, iv.clone());
+            let mut ctr2 = CtrMode::new(algo, iv);            
+            EncryptConn {
+                encoder: Box::new(ctr1),
+                decoder: Box::new(ctr2)
+            }
+        } else {
+            let mut algo = AesSafe256Encryptor::new(&key);
+            let mut ctr1 = CtrMode::new(algo, iv.clone());
+            let mut ctr2 = CtrMode::new(algo, iv);            
+            EncryptConn {
+                encoder: Box::new(ctr1),
+                decoder: Box::new(ctr2),
+            }
+        }
+     }
+ } 
+
+ impl TestCrypt for EncryptConn {
+     fn testcrypt(&mut self, size: usize) {
+        let n = size * 1024 * 1024;
+        let mut rng = rand::thread_rng();
+        let mut plain = vec![0u8; n];
+        let mut crypto = vec![0u8; n];
+        let mut packet = vec![0u8; n];
+        rng.fill_bytes(&mut packet);
+
+        let ebt = time::precise_time_ns();
+        self.encoder.encrypt(&mut RefReadBuffer::new(&packet), &mut RefWriteBuffer::new(&mut crypto), false).unwrap();
+        let dbt = time::precise_time_ns();
+        info!("aes256 encrypt plain size: {}M, time={}ms", size, (dbt - ebt) / 1000_000);
+
+        self.decoder.decrypt(&mut RefReadBuffer::new(&crypto), &mut RefWriteBuffer::new(&mut plain), false).unwrap();
+        info!("aes256 decrypt crypto size: {}M, time={}ms", size, (time::precise_time_ns() - dbt) / 1000_000);
+        
+        assert_eq!(packet, plain);
+     }
+ }
 
 struct Aes256 {
     encoder: CtrMode<AesNiEncryptor>,

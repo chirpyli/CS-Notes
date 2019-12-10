@@ -54,11 +54,14 @@ Lisheng Computer science learning.
 - [Erlang安装](./MQ/Erlang安装.md)
 - [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
 
+### Docker
+- [Docker更换为国内镜像](./Docker/Docker更换为国内镜像.md)
+
 
 ### Tools
 - [Git基础篇](./Tools/Git基础篇.md)
-- [Docker更换为国内镜像](./Tools/Docker更换为国内镜像.md)
-
+- [代码统计工具cloc](./Tools/代码统计工具.md)
+- [如何让VisualStudioCode打开文件始终在新标签页打开](./Tools/如何让VisualStudioCode打开文件始终在新标签页打开.md)   
 
 ### ELK日志平台
 - [日志库的设计思路](./ELK日志/日志库的设计思路.md)       
