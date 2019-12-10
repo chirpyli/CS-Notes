@@ -60,6 +60,7 @@ Lisheng Computer science learning.
 
 ### Tools
 - [Git基础篇](./Tools/Git基础篇.md)
+- [Valgrind安装与使用](./Tools/Valgrind安装与使用.md)
 - [代码统计工具cloc](./Tools/代码统计工具.md)
 - [如何让VisualStudioCode打开文件始终在新标签页打开](./Tools/如何让VisualStudioCode打开文件始终在新标签页打开.md)   
 
