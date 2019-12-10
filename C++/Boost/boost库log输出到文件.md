@@ -103,11 +103,11 @@ int main() {
     BOOST_LOG_SEV(lg, error) << "An error severity message";
     BOOST_LOG_SEV(lg, fatal) << "A fatal severity message";
 
-	system("pause");
 	return 0;
 }
 ```
-注释一：keywords
+注释一：`keywords`
+
 keywords | 说明
 ----- | ----
 file_name | The keyword allows to pass log file name the rotating file stream methods         
@@ -116,8 +116,9 @@ time_based_rotation | The keyword allows to pass time-based file rotation predic
 format | The keyword for passing format specifiers to functions
 
 
-注释二：add_common_attributes()
+注释二：`add_common_attributes()`
 The function adds commonly used attributes to the logging system. Specifically, the following attributes are registered globally:
+
 attributes | 说明
 ----- | -----
 LineID | logging records counter with value type <tt>unsigned int</tt>    
