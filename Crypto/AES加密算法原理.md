@@ -30,7 +30,7 @@ AES128算法流程如下图所示：
 ![image](../images/aes.png)   
 
 #### KeyExpansion（密钥扩展）
-即由密钥生成不同轮次轮密钥的过程如下：
+每一轮使用的密钥都是根据上一轮的密钥变换而来的，由密钥生成不同轮次轮密钥的算法过程可参考[AES key schedule](https://en.wikipedia.org/wiki/AES_key_schedule)，这里不再细述。
 
 #### SubBytes（字节替代）
 字节替代，就是依据S盒（Subtitution Box）把明文块的每一个字节都替代成另外一个字节，`b[i,j] = S(a[i,j])`， 实现时直接查表即可。
@@ -53,3 +53,6 @@ AES128算法流程如下图所示：
 >参考资料：     
 [Advanced Encryption Standard](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)    
 [FIPS 197, Advanced Encryption Standard (AES)](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf)          
+
+---
+>最后应用AES加密算法时，遇到了性能瓶颈，需要提高AES加密算法的吞吐量，目前有2个思路，一个是硬件加速，AES-NI，但这个加速目前测的最多能提升10倍左右，吞吐量还是不够，还有一个思路是GPU加速，在CTR模式下进行并行计算加速，这个目前还没有实现并进行测试，可参考这篇[GPU accelerated AES in counter mode](https://www.andrew.cmu.edu/user/aspratt/accelerated_aes/)。
