@@ -6,7 +6,7 @@ Dr. Memory 是一个开源免费的内存检测工具，它能够及时发现内
 
 ### 使用示例
 
-#### 示例程序1：
+#### 示例[程序1](./drmemroy1.c)：
 ```c
 #include <stdio.h>
 
@@ -19,10 +19,30 @@ int main(){
 }
 ```
 编译程序，编译时添加```-g```，以产生调试信息。使用```drmemory -- <your program> args```进行检测。
-![在这里插入图片描述](https://img-blog.csdn.net/20180918100611117?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NfbGlzaGVuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+```
+~~Dr.M~~ Dr. Memory version 2.0.1
+~~Dr.M~~ 
+~~Dr.M~~ Error #1: UNADDRESSABLE ACCESS: writing 0x0000000000000000-0x0000000000000004 4 byte(s)
+~~Dr.M~~ # 0 main               [/home/sl/Works/github/CS-Notes/Tools/drmemory1.cpp:6]
+~~Dr.M~~ Note: @0:00:00.962 in thread 20565
+~~Dr.M~~ Note: instruction: mov    $0x0000000a -> (%rax)
+~~Dr.M~~ 
+~~Dr.M~~ ERRORS FOUND:
+~~Dr.M~~       1 unique,     1 total unaddressable access(es)
+~~Dr.M~~       0 unique,     0 total uninitialized access(es)
+~~Dr.M~~       0 unique,     0 total invalid heap argument(s)
+~~Dr.M~~       0 unique,     0 total warning(s)
+~~Dr.M~~       0 unique,     0 total,      0 byte(s) of leak(s)
+~~Dr.M~~       0 unique,     0 total,      0 byte(s) of possible leak(s)
+~~Dr.M~~ ERRORS IGNORED:
+~~Dr.M~~      13 unique,    16 total,   6383 byte(s) of still-reachable allocation(s)
+~~Dr.M~~          (re-run with "-show_reachable" for details)
+~~Dr.M~~ Details: /home/sl/tools/DrMemory-Linux-2.0.1-2/drmemory/logs/DrMemory-a.out.20565.000/results.txt
+Segmentation fault (core dumped)
+```
 
 
-#### 示例程序2：
+#### 示例[程序2](./drmemory2.c)：
 ```c
 #include <stdlib.h>
 
@@ -37,7 +57,35 @@ int main(void) {
 }
 ```
 运行后结果如下：
-![在这里插入图片描述](https://img-blog.csdn.net/20180918102323276?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NfbGlzaGVuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+```
+~~Dr.M~~ Dr. Memory version 2.0.1
+~~Dr.M~~ 
+~~Dr.M~~ Error #1: UNADDRESSABLE ACCESS beyond heap bounds: writing 0x0000000000604d08-0x0000000000604d0c 4 byte(s)
+~~Dr.M~~ # 0 f                  [/home/sl/Works/github/CS-Notes/Tools/drmemory2.c:5]
+~~Dr.M~~ # 1 main               [/home/sl/Works/github/CS-Notes/Tools/drmemory2.c:9]
+~~Dr.M~~ Note: @0:00:00.496 in thread 20926
+~~Dr.M~~ Note: next higher malloc: 0x0000000000604d40-0x0000000000605d40
+~~Dr.M~~ Note: refers to 0 byte(s) beyond last valid byte in prior malloc
+~~Dr.M~~ Note: prev lower malloc:  0x0000000000604ce0-0x0000000000604d08
+~~Dr.M~~ Note: instruction: mov    $0x00000000 -> (%rax)
+~~Dr.M~~ 
+~~Dr.M~~ Error #2: LEAK 40 direct bytes 0x0000000000604ce0-0x0000000000604d08 + 0 indirect bytes
+~~Dr.M~~ # 0 replace_malloc               [/drmemory_package/common/alloc_replace.c:2577]
+~~Dr.M~~ # 1 f                            [/home/sl/Works/github/CS-Notes/Tools/drmemory2.c:4]
+~~Dr.M~~ # 2 main                         [/home/sl/Works/github/CS-Notes/Tools/drmemory2.c:9]
+~~Dr.M~~ 
+~~Dr.M~~ ERRORS FOUND:
+~~Dr.M~~       1 unique,     1 total unaddressable access(es)
+~~Dr.M~~       0 unique,     0 total uninitialized access(es)
+~~Dr.M~~       0 unique,     0 total invalid heap argument(s)
+~~Dr.M~~       0 unique,     0 total warning(s)
+~~Dr.M~~       1 unique,     1 total,     40 byte(s) of leak(s)
+~~Dr.M~~       0 unique,     0 total,      0 byte(s) of possible leak(s)
+~~Dr.M~~ ERRORS IGNORED:
+~~Dr.M~~      13 unique,    16 total,   6383 byte(s) of still-reachable allocation(s)
+~~Dr.M~~          (re-run with "-show_reachable" for details)
+~~Dr.M~~ Details: /home/sl/tools/DrMemory-Linux-2.0.1-2/drmemory/logs/DrMemory-a.out.20926.000/results.txt
+```
 可以看到2个内存错误都检测到了。
 
 更多选项可参考```drmemory -help```。
