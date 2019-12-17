@@ -38,3 +38,34 @@ double marm() noexcept;     //marm() doesn't throw an exception.
 ```
 当使用这个关键字时，等于是程序员向编译器做出了承诺，放心吧，这个函数不会引发异常。
 
+
+### 智能指针
+比较早的智能指针是`auto_ptr`，但现在已经不推荐使用，现在推荐使用的智能指针是`unique_ptr`、`shared_ptr`、`weak_ptr`。那这三种智能指针该如何使用呢？
+
+如果程序要使用多个指向同一个对象的指针，应选择`shared_ptr`。如果程序不需要多个指向同一个对象的指针，则可使用`unique_ptr`。`weak+ptr`较为特殊，一般与`shared_ptr`配合使用，它可以指向`shared_ptr`所指向的对象，但却不增加对象的引用计数，这样就有可能出现`weak_ptr`所指向的对象实际上已经被释放了的情况。
+
+代码示例[cpp11.cpp](./cpp11.cpp)
+
+### C++11
+前面已经提到一些C++11的内容，这里再继续谈一些。当然，这里列出的不是全部，只选取了其中一部分。
+
+1. 增加了新类型`long long`、`unsigned long long`、`char16_t`、`char32_t`。
+
+2. 增加了空指针`nullptr`，推荐使用`nullptr`而不是0提供了更高类型的安全。
+
+3. 新的基于范围的`for`循环。
+
+4. 新增智能指针`unique_ptr`、`shared_ptr`、`weak_ptr`。
+
+5. 右值引用`&&`，移动语义（move semantics）。
+
+6. Lambda表达式。
+
+7. 并行编程。
+
+
+代码示例[cpp11.cpp](./cpp11.cpp)
+
+### Boost
+开源库，里面有很多库，比如常用的日志库、线程库等。
+
