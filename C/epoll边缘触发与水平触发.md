@@ -277,3 +277,7 @@ events_handle, ev.events = 1
 step in level_trigger, read bytes:2
 recv from client: 6
 ```
+
+
+---
+>还可以参考github上这个项目[handy](https://github.com/yedf/handy)，简洁易用的C++11网络库，支持单机千万并发连接，代码量只有几千行，核心代码大概2k左右。 里面有裸用epoll的实例代码[handy/raw-examples/epoll.cc](https://github.com/yedf/handy/blob/master/raw-examples/epoll.cc)。 
