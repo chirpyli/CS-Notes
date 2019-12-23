@@ -50,6 +50,10 @@ Lisheng Computer science learning.
 - [AES加密算法工作原理](./Crypto/AES加密算法原理.md)      
 - [Diffie-Hellman密钥交换](./Crypto/Diffie-Hellman密钥交换.md)
 
+### 其他
+- [工作窃取算法work-steal](./Others/工作窃取算法work-stealing.md)
+- [日志库的设计思路](./Others/日志库的设计思路.md)     
+
 ### MQ
 - [Erlang安装](./MQ/Erlang安装.md)
 - [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
@@ -68,7 +72,6 @@ Lisheng Computer science learning.
 - [docker及docker-compose安装（Ubuntu16.04）](./Docker/docker及docker-compose安装.md)   
 
 ### ELK日志平台
-- [日志库的设计思路](./ELK日志/日志库的设计思路.md)       
 - [Filebeat+Logstash+Elasticsearch+Kibana安装](./ELK日志/Filebeat+Logstash+Elasticsearch+Kibana安装.md)
 - [Filebeat概述](./ELK日志/Filebeat概述.md)
 - [Filebeat工作原理](./ELK日志/Filebeat工作原理.md)
