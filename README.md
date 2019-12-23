@@ -53,6 +53,9 @@ Lisheng Computer science learning.
 ### 其他
 - [工作窃取算法work-steal](./Others/工作窃取算法work-stealing.md)
 - [日志库的设计思路](./Others/日志库的设计思路.md)     
+- [YAML学习笔记](./Others/YAML学习笔记.md)
+- [TOML学习笔记](./Others/TOML学习笔记.md)
+
 
 ### MQ
 - [Erlang安装](./MQ/Erlang安装.md)
