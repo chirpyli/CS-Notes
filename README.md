@@ -15,6 +15,10 @@ Lisheng Computer science learning.
 - [Linux下进程管理工具supervisor](./Linux/Linux下进程管理工具supervisor.md) 
 - [Shell编程](./Linux/Shell编程.md)
 - [Linux下core dump](./Linux/Linux下core_dump.md)
+- [Linux内核OOM killer机制](./Linux/Linux内核OOMkiller机制.md)
+- [Linux查看系统详细时间及同步网络时间](./Linux/Linux查看系统详细时间及同步网络时间.md)
+- [自旋锁](./Linux/自旋锁.md)
+- [顺序锁](./Linux/顺序锁.md)
 
 ### C
 - [Linux进程间通信——管道](./C/Linux进程间通信/管道.md)
