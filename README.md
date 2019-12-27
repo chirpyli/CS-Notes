@@ -49,8 +49,12 @@ Lisheng Computer science learning.
 - [Rust生命周期bound用于泛型的引用](./Rust/Rust生命周期bound用于泛型的引用.md)
 - [对Rust所有权、借用及生命周期的理解](./Rust/对Rust所有权、借用及生命周期的理解.md)
 - [Rust实现的常用密码学库](./Rust/Rust实现的常用密码学库)       
-
-
+- [Rust中使用Protocol Buffers](./Rust/Rust中使用ProtocolBuffers.md)     
+- [Rust中的panic宏](./Rust/Rust中的panic宏.md)      
+- [线程池的简单实现（Rust）](./Rust/线程池的简单实现（Rust）.md)              - [记一次排查内存泄漏的过程](./Rust/记一次排查内存泄漏的过程.md)  
+- [Rust轻量级I/O库mio](./Rust/Rust轻量级IO库mio.md)     
+- [Rust双重循环break的问题](./Rust双重循环break的问题.md)   
+- [log4rs日志库简析](./Rust/log4rs日志库简析.md)
 
 ### 其他
 - [工作窃取算法work-steal](./Others/工作窃取算法work-stealing.md)
@@ -59,9 +63,6 @@ Lisheng Computer science learning.
 - [TOML学习笔记](./Others/TOML学习笔记.md)
 
 
-### MQ
-- [Erlang安装](./MQ/Erlang安装.md)
-- [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
 
 ### 密码学
 - [分组密码及AES算法初识](./Crypto/分组密码及AES算法初识.md)  
@@ -75,16 +76,28 @@ Lisheng Computer science learning.
 
 
 #### Bitcoin
-- [PoW共识算法](https://juejin.im/post/5d1f0e8af265da1bbc6ff5a4)      - [比特币私钥、账户与钱包](https://juejin.im/post/5d1f1d01e51d4556db694a74)       
-- [比特币交易](https://juejin.im/post/5d23ea67f265da1bbb04000b)
-- [比特币核心数据结构](https://juejin.im/post/5d27ecfef265da1bb31c6434) - [比特币挖矿](https://juejin.im/post/5d27ecfae51d45776031b074)    
+- [PoW共识算法](https://juejin.im/post/5d1f0e8af265da1bbc6ff5a4)      
+- [比特币私钥、账户与钱包](https://juejin.im/post/5d1f1d01e51d4556db694a74)              
+- [比特币交易](https://juejin.im/post/5d23ea67f265da1bbb04000b)         
+- [比特币核心数据结构](https://juejin.im/post/5d27ecfef265da1bb31c6434)         
+- [比特币挖矿](https://juejin.im/post/5d27ecfae51d45776031b074)         
 
 #### Ethereum && Fabric
-- [以太坊学习笔记](https://juejin.im/post/5d358c59f265da1bb776a805) 
-- [以太坊节点发现协议](https://juejin.im/post/5d302646f265da1bcd380f14)
-- [以太坊RLPx传输协议](https://juejin.im/post/5d2fe437f265da1bc23fae51)
-- [Fabric网络节点发现及成员管理](https://juejin.im/post/5d3035daf265da1b7f29b645)    
-- [Fabric网络组织与主节点选举](https://juejin.im/post/5d3033af6fb9a07ebe74f703)     
+- [以太坊学习笔记](https://juejin.im/post/5d358c59f265da1bb776a805)         
+- [以太坊节点发现协议](https://juejin.im/post/5d302646f265da1bcd380f14)         
+- [以太坊RLPx传输协议](https://juejin.im/post/5d2fe437f265da1bc23fae51)             
+- [Fabric网络节点发现及成员管理](https://juejin.im/post/5d3035daf265da1b7f29b645)                
+- [Fabric网络组织与主节点选举](https://juejin.im/post/5d3033af6fb9a07ebe74f703)                 
+
+### MQ
+- [Erlang安装](./MQ/Erlang安装.md)
+- [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
+
+
+### Docker
+- [Docker更换为国内镜像](./Docker/Docker更换为国内镜像.md)
+- [docker及docker-compose安装（Ubuntu16.04）](./Docker/docker及docker-compose安装.md)   
+
 
 ### Tools
 - [Git基础篇](./Tools/Git基础篇.md)
@@ -93,12 +106,9 @@ Lisheng Computer science learning.
 - [Dr.Memory内存检测工具](./Tools/Dr.Memory内存检测工具.md)
 - [代码统计工具cloc](./Tools/代码统计工具.md)
 - [如何让VisualStudioCode打开文件始终在新标签页打开](./Tools/如何让VisualStudioCode打开文件始终在新标签页打开.md)   
+- [matlab笔记](./Tools/matlab笔记.md)
 
-### Docker
-- [Docker更换为国内镜像](./Docker/Docker更换为国内镜像.md)
-- [docker及docker-compose安装（Ubuntu16.04）](./Docker/docker及docker-compose安装.md)   
-
-### ELK日志平台
+### ELK
 - [Filebeat+Logstash+Elasticsearch+Kibana安装](./ELK日志/Filebeat+Logstash+Elasticsearch+Kibana安装.md)
 - [Filebeat概述](./ELK日志/Filebeat概述.md)
 - [Filebeat工作原理](./ELK日志/Filebeat工作原理.md)
@@ -107,5 +117,3 @@ Lisheng Computer science learning.
 - [Elasticsearch定时删除索引](./ELK平台/Elasticsearch定时删除索引.md)
 
 
-### Matlab
-- [matlab笔记](./Matlab/matlab笔记.md)
