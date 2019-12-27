@@ -29,7 +29,8 @@ Lisheng Computer science learning.
 ### C++
 - [C++笔试题](./C++/C++笔试题/C++笔试题.md)
 - [C++PrimerPlus笔记](./C++/C++PrimerPlus/C++PrimerPlus笔记.md) 
-
+- [C++中前置++与后置++运算符重载](./C++/C++中前置++与后置++运算符重载.md)
+- [C++拷贝构造函数被调用的时机](./C++/C++拷贝构造函数被调用的时机.md)
 #### Boost
 - [boost安装](./C++/Boost/boost安装.md) 
 - [boost库noncopyable](./C++/Boost/boost库noncopyable.md)       
