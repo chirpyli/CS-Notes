@@ -66,6 +66,8 @@ Lisheng Computer science learning.
 - [Erlang安装](./MQ/Erlang安装.md)
 - [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
 
+### 区块链
+- [对区块链技术几个问题的思考](./Blockchain/对区块链技术几个问题的思考.md)
 
 ### Tools
 - [Git基础篇](./Tools/Git基础篇.md)
