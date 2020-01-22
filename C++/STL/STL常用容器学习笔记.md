@@ -1,4 +1,4 @@
-这里简要的记述一下STL常用容器的实现原理，要点等内容， 目前梳理的很差，后期再进行整理。
+这里简要的记述一下STL常用容器的实现原理，要点等内容。
 
 ## vector
 `vector`是比较常用的stl容器，用法与数组是非类似，其内部实现是连续空间分配，与数组的不同之处在于可弹性增加空间，而`array`是静态空间，分配后不能动态扩展。`vecotr`的实现较为简单，主要的关键点在于当空间不足时，会新分配当前空间2倍的空间，将旧空间数据拷贝到新空间，然后删除旧空间。
@@ -627,4 +627,349 @@ void deque<_Tp, _Alloc>::_M_reallocate_map(size_type __nodes_to_add, bool __add_
 `vector`能够实现随机访问，动态扩展，但在头部插入`O(n)`，开销较大，且动态扩展时需要复制所有的元素，同样效率较低。`list`插入、删除头尾部元素效率很高`O(n)`，但是不能随机访问，查找效率`O(n)`，每个节点需要存储前后节点指针，有较大的额外存储开销。而`deque`等于是在两种容器的优缺点进行了一定的平衡，在收尾插入、删除元素，效率很高`O(1)`，在中间插入`O(n)`都差不多，但其能实现随机访问，且动态扩展时不需要复制全体元素，只需要新分配足够的连续存储空间，最多重新复制一下`map`到新`map`，而`map`是各个连续存储空间首地址指针数组，容量相比全体元素小非常多，动态扩展时代价很小。所以，`deque`相比`vector`在更一般的情况下有更高的性能，相比`list`有更小的额外存储空间（但`deque`拥有较大的最小内存开销，原因是它需要`map`和一段连续存储空间开销，即元素数目非常小时开销比`list`大，但当元素数目较多时，空间开销比`list`少）。
 
 
+## stack
+栈也是经常用的数据结构，其实现较为简单，内部实现依赖`deque`，当然也可以用`vector`、`list`实现。
+```c++
+// Stack implementation -*- C++ -*-
+template<typename _Tp, typename _Sequence = deque<_Tp> >
+class stack {
+// concept requirements
+typedef typename _Sequence::value_type _Sequence_value_type;
 
+public:
+    typedef typename _Sequence::value_type		value_type;
+    typedef typename _Sequence::reference		reference;
+    typedef typename _Sequence::const_reference	const_reference;
+    typedef typename _Sequence::size_type		size_type;
+    typedef	       _Sequence			container_type;
+
+protected:
+    _Sequence c;
+
+public:
+	stack(): c() { }
+	// 省略构造函数与析构函数......
+      /**
+       *  Returns true if the %stack is empty.
+       */
+    bool empty() const { return c.empty(); }
+
+    /**  Returns the number of elements in the %stack.  */
+    size_type size() const { return c.size(); }
+
+      /**
+       *  Returns a read/write reference to the data at the first
+       *  element of the %stack.
+       */
+    reference top() {
+		__glibcxx_requires_nonempty();
+		return c.back();
+    }
+      /**
+       *  @brief  Add data to the top of the %stack.
+       *  @param  __x  Data to be added.
+       *
+       *  This is a typical %stack operation.  The function creates an
+       *  element at the top of the %stack and assigns the given data
+       *  to it.  The time complexity of the operation depends on the
+       *  underlying sequence.
+       */
+    void push(const value_type& __x) { c.push_back(__x); }
+
+      /**
+       *  @brief  Removes first element.
+       *
+       *  This is a typical %stack operation.  It shrinks the %stack
+       *  by one.  The time complexity of the operation depends on the
+       *  underlying sequence.
+       *
+       *  Note that no data is returned, and if the first element's
+       *  data is needed, it should be retrieved before pop() is
+       *  called.
+       */
+    void pop() {
+		__glibcxx_requires_nonempty();
+		c.pop_back();
+    }
+
+	// 省略其他非关键代码......
+}; 
+```
+
+## queue
+队列有普通的先进先出的队列，还有优先队列，优先级队列不仅仅要按先后顺序，更强调优先级高的先出队列。
+### 普通队列的实现
+普通队列的实现与栈实现差不多，也是基于`deque`实现的。
+```c++
+template<typename _Tp, typename _Sequence = deque<_Tp> >
+class queue {
+// concept requirements
+typedef typename _Sequence::value_type _Sequence_value_type;
+
+public:
+    typedef typename	_Sequence::value_type		value_type;
+    typedef typename	_Sequence::reference		reference;
+    typedef typename	_Sequence::const_reference	const_reference;
+    typedef typename	_Sequence::size_type		size_type;
+    typedef		_Sequence			container_type;
+
+protected:
+      /*  Maintainers wondering why this isn't uglified as per style
+       *  guidelines should note that this name is specified in the standard,
+       *  C++98 [23.2.3.1].
+       *  (Why? Presumably for the same reason that it's protected instead
+       *  of private: to allow derivation.  But none of the other
+       *  containers allow for derivation.  Odd.)
+       */
+       ///  @c c is the underlying container.
+    _Sequence c;
+
+public:
+	queue(): c() { }
+	// 省略构造函数与析构函数......
+
+    bool empty() const { return c.empty(); }
+    size_type size() const { return c.size(); }
+
+    reference front() {
+		__glibcxx_requires_nonempty();
+		return c.front();
+    }
+
+    reference back() {
+		__glibcxx_requires_nonempty();
+		return c.back();
+    }
+
+    // Add data to the end of the %queue.
+    void push(const value_type& __x) { c.push_back(__x); }
+      
+    // Removes first element.
+    void pop() {
+		__glibcxx_requires_nonempty();
+		c.pop_front();
+    }
+};
+```
+
+### 优先队列priority_queue实现
+优先队列的实现原理是基于堆实现的，堆底层是数组，所以，这里`priority_queue`底层的序列容器是`vector`，选则`vector`而不是其他容器，是因为优先队列基于堆，而堆的各种操作中，插入、删除、都是从尾部插入、删除操作最后实际上物理删除的是尾部元素，而且其扩容是2倍扩容，符合二叉树下一层节点数目是上一次所有数目+1，二倍扩容恰好合适，当然也可以用其他容器（例如`deque`，但不是最优的）。至于堆实现优先队列的原理，这里不再叙述。源码实现如下：
+```c++
+template<typename _Tp, typename _Sequence = vector<_Tp>, typename _Compare  = less<typename _Sequence::value_type> >
+class priority_queue {
+#ifdef _GLIBCXX_CONCEPT_CHECKS
+// concept requirements
+typedef typename _Sequence::value_type _Sequence_value_type;
+# if __cplusplus < 201103L
+    __glibcxx_class_requires(_Tp, _SGIAssignableConcept)
+# endif
+    __glibcxx_class_requires(_Sequence, _SequenceConcept)
+    __glibcxx_class_requires(_Sequence, _RandomAccessContainerConcept)
+    __glibcxx_class_requires2(_Tp, _Sequence_value_type, _SameTypeConcept)
+    __glibcxx_class_requires4(_Compare, bool, _Tp, _Tp, _BinaryFunctionConcept)
+#endif
+
+#if __cplusplus >= 201103L
+template<typename _Alloc>
+using _Uses = typename
+enable_if<uses_allocator<_Sequence, _Alloc>::value>::type;
+#endif
+
+public:
+    typedef typename	_Sequence::value_type		value_type;
+    typedef typename	_Sequence::reference		 reference;
+    typedef typename	_Sequence::const_reference	   const_reference;
+    typedef typename	_Sequence::size_type		 size_type;
+    typedef		_Sequence			    container_type;
+    typedef	       _Compare				    value_compare;
+
+protected:
+     _Sequence  c;
+    _Compare   comp;	// 经常需要比较操作
+
+public:
+      /**
+       *  @brief  Default constructor creates no elements.
+       */
+#if __cplusplus < 201103L
+    explicit priority_queue(const _Compare& __x = _Compare(), const _Sequence& __s = _Sequence()): c(__s), comp(__x) { 		std::make_heap(c.begin(), c.end(), comp); 	// 构造堆
+	}
+#else
+    template<typename _Seq = _Sequence, typename _Requires = typename enable_if<__and_<is_default_constructible<_Compare>, is_default_constructible<_Seq>>::value>::type>
+	priority_queue() : c(), comp() { }
+
+    explicit priority_queue(const _Compare& __x, const _Sequence& __s) : c(__s), comp(__x){ 
+		std::make_heap(c.begin(), c.end(), comp); 
+	}
+
+    explicit priority_queue(const _Compare& __x, _Sequence&& __s = _Sequence()) : c(std::move(__s)), comp(__x){ 			std::make_heap(c.begin(), c.end(), comp); 
+	}
+
+    template<typename _Alloc, typename _Requires = _Uses<_Alloc>>
+	explicit priority_queue(const _Alloc& __a): c(__a), comp() { }
+
+    template<typename _Alloc, typename _Requires = _Uses<_Alloc>>
+	priority_queue(const _Compare& __x, const _Alloc& __a)
+	: c(__a), comp(__x) { }
+
+      template<typename _Alloc, typename _Requires = _Uses<_Alloc>>
+	priority_queue(const _Compare& __x, const _Sequence& __c,
+		       const _Alloc& __a)
+	: c(__c, __a), comp(__x) { }
+
+      template<typename _Alloc, typename _Requires = _Uses<_Alloc>>
+	priority_queue(const _Compare& __x, _Sequence&& __c, const _Alloc& __a)
+	: c(std::move(__c), __a), comp(__x) { }
+
+      template<typename _Alloc, typename _Requires = _Uses<_Alloc>>
+	priority_queue(const priority_queue& __q, const _Alloc& __a)
+	: c(__q.c, __a), comp(__q.comp) { }
+
+      template<typename _Alloc, typename _Requires = _Uses<_Alloc>>
+	priority_queue(priority_queue&& __q, const _Alloc& __a)
+	: c(std::move(__q.c), __a), comp(std::move(__q.comp)) { }
+#endif
+
+      /**
+       *  @brief  Builds a %queue from a range.
+       *  @param  __first  An input iterator.
+       *  @param  __last  An input iterator.
+       *  @param  __x  A comparison functor describing a strict weak ordering.
+       *  @param  __s  An initial sequence with which to start.
+       *
+       *  Begins by copying @a __s, inserting a copy of the elements
+       *  from @a [first,last) into the copy of @a __s, then ordering
+       *  the copy according to @a __x.
+       *
+       *  For more information on function objects, see the
+       *  documentation on @link functors functor base
+       *  classes@endlink.
+       */
+#if __cplusplus < 201103L
+      template<typename _InputIterator>
+	priority_queue(_InputIterator __first, _InputIterator __last,
+		       const _Compare& __x = _Compare(),
+		       const _Sequence& __s = _Sequence())
+	: c(__s), comp(__x)
+	{
+	  __glibcxx_requires_valid_range(__first, __last);
+	  c.insert(c.end(), __first, __last);
+	  std::make_heap(c.begin(), c.end(), comp);
+	}
+#else
+      template<typename _InputIterator>
+	priority_queue(_InputIterator __first, _InputIterator __last,
+		       const _Compare& __x,
+		       const _Sequence& __s)
+	: c(__s), comp(__x)
+	{
+	  __glibcxx_requires_valid_range(__first, __last);
+	  c.insert(c.end(), __first, __last);
+	  std::make_heap(c.begin(), c.end(), comp);
+	}
+
+      template<typename _InputIterator>
+	priority_queue(_InputIterator __first, _InputIterator __last,
+		       const _Compare& __x = _Compare(),
+		       _Sequence&& __s = _Sequence())
+	: c(std::move(__s)), comp(__x)
+	{
+	  __glibcxx_requires_valid_range(__first, __last);
+	  c.insert(c.end(), __first, __last);
+	  std::make_heap(c.begin(), c.end(), comp);
+	}
+#endif
+
+      /**
+       *  Returns true if the %queue is empty.
+       */
+      bool
+      empty() const
+      { return c.empty(); }
+
+      /**  Returns the number of elements in the %queue.  */
+      size_type
+      size() const
+      { return c.size(); }
+
+      /**
+       *  Returns a read-only (constant) reference to the data at the first
+       *  element of the %queue.
+       */
+      const_reference
+      top() const
+      {
+	__glibcxx_requires_nonempty();
+	return c.front();
+      }
+
+      /**
+       *  @brief  Add data to the %queue.
+       *  @param  __x  Data to be added.
+       *
+       *  This is a typical %queue operation.
+       *  The time complexity of the operation depends on the underlying
+       *  sequence.
+       */
+      void
+      push(const value_type& __x)
+      {
+	c.push_back(__x);
+	std::push_heap(c.begin(), c.end(), comp);
+      }
+
+#if __cplusplus >= 201103L
+      void
+      push(value_type&& __x)
+      {
+	c.push_back(std::move(__x));
+	std::push_heap(c.begin(), c.end(), comp);
+      }
+
+      template<typename... _Args>
+	void
+	emplace(_Args&&... __args)
+	{
+	  c.emplace_back(std::forward<_Args>(__args)...);
+	  std::push_heap(c.begin(), c.end(), comp);
+	}
+#endif
+
+      /**
+       *  @brief  Removes first element.
+       *
+       *  This is a typical %queue operation.  It shrinks the %queue
+       *  by one.  The time complexity of the operation depends on the
+       *  underlying sequence.
+       *
+       *  Note that no data is returned, and if the first element's
+       *  data is needed, it should be retrieved before pop() is
+       *  called.
+       */
+      void
+      pop()
+      {
+	__glibcxx_requires_nonempty();
+	std::pop_heap(c.begin(), c.end(), comp);
+	c.pop_back();
+      }
+
+#if __cplusplus >= 201103L
+      void
+      swap(priority_queue& __pq)
+      noexcept(__and_<
+#if __cplusplus > 201402L || !defined(__STRICT_ANSI__) // c++1z or gnu++11
+		 __is_nothrow_swappable<_Sequence>,
+#else
+		 __is_nothrow_swappable<_Tp>,
+#endif
+		 __is_nothrow_swappable<_Compare>
+	       >::value)
+      {
+	using std::swap;
+	swap(c, __pq.c);
+	swap(comp, __pq.comp);
+      }
+#endif // __cplusplus >= 201103L
+    };
+```
