@@ -785,123 +785,34 @@ public:
 
 protected:
      _Sequence  c;
-    _Compare   comp;	// 经常需要比较操作
+    _Compare   comp;	// 优先队列基于堆，而堆经常需要比较操作
 
 public:
-      /**
-       *  @brief  Default constructor creates no elements.
-       */
-#if __cplusplus < 201103L
-    explicit priority_queue(const _Compare& __x = _Compare(), const _Sequence& __s = _Sequence()): c(__s), comp(__x) { 		std::make_heap(c.begin(), c.end(), comp); 	// 构造堆
-	}
-#else
-    template<typename _Seq = _Sequence, typename _Requires = typename enable_if<__and_<is_default_constructible<_Compare>, is_default_constructible<_Seq>>::value>::type>
-	priority_queue() : c(), comp() { }
-
-    explicit priority_queue(const _Compare& __x, const _Sequence& __s) : c(__s), comp(__x){ 
-		std::make_heap(c.begin(), c.end(), comp); 
+    //    *  @brief  Default constructor creates no elements.
+    explicit priority_queue(const _Compare& __x = _Compare(), const _Sequence& __s = _Sequence()): c(__s), comp(__x) { 		
+        std::make_heap(c.begin(), c.end(), comp); 	// 构造堆
 	}
 
-    explicit priority_queue(const _Compare& __x, _Sequence&& __s = _Sequence()) : c(std::move(__s)), comp(__x){ 			std::make_heap(c.begin(), c.end(), comp); 
-	}
-
-    template<typename _Alloc, typename _Requires = _Uses<_Alloc>>
-	explicit priority_queue(const _Alloc& __a): c(__a), comp() { }
-
-    template<typename _Alloc, typename _Requires = _Uses<_Alloc>>
-	priority_queue(const _Compare& __x, const _Alloc& __a)
-	: c(__a), comp(__x) { }
-
-      template<typename _Alloc, typename _Requires = _Uses<_Alloc>>
-	priority_queue(const _Compare& __x, const _Sequence& __c,
-		       const _Alloc& __a)
-	: c(__c, __a), comp(__x) { }
-
-      template<typename _Alloc, typename _Requires = _Uses<_Alloc>>
-	priority_queue(const _Compare& __x, _Sequence&& __c, const _Alloc& __a)
-	: c(std::move(__c), __a), comp(__x) { }
-
-      template<typename _Alloc, typename _Requires = _Uses<_Alloc>>
-	priority_queue(const priority_queue& __q, const _Alloc& __a)
-	: c(__q.c, __a), comp(__q.comp) { }
-
-      template<typename _Alloc, typename _Requires = _Uses<_Alloc>>
-	priority_queue(priority_queue&& __q, const _Alloc& __a)
-	: c(std::move(__q.c), __a), comp(std::move(__q.comp)) { }
-#endif
-
-      /**
-       *  @brief  Builds a %queue from a range.
-       *  @param  __first  An input iterator.
-       *  @param  __last  An input iterator.
-       *  @param  __x  A comparison functor describing a strict weak ordering.
-       *  @param  __s  An initial sequence with which to start.
-       *
-       *  Begins by copying @a __s, inserting a copy of the elements
-       *  from @a [first,last) into the copy of @a __s, then ordering
-       *  the copy according to @a __x.
-       *
-       *  For more information on function objects, see the
-       *  documentation on @link functors functor base
-       *  classes@endlink.
-       */
-#if __cplusplus < 201103L
-      template<typename _InputIterator>
-	priority_queue(_InputIterator __first, _InputIterator __last,
-		       const _Compare& __x = _Compare(),
-		       const _Sequence& __s = _Sequence())
-	: c(__s), comp(__x)
-	{
-	  __glibcxx_requires_valid_range(__first, __last);
-	  c.insert(c.end(), __first, __last);
-	  std::make_heap(c.begin(), c.end(), comp);
-	}
-#else
-      template<typename _InputIterator>
-	priority_queue(_InputIterator __first, _InputIterator __last,
-		       const _Compare& __x,
-		       const _Sequence& __s)
-	: c(__s), comp(__x)
-	{
-	  __glibcxx_requires_valid_range(__first, __last);
-	  c.insert(c.end(), __first, __last);
-	  std::make_heap(c.begin(), c.end(), comp);
-	}
-
-      template<typename _InputIterator>
-	priority_queue(_InputIterator __first, _InputIterator __last,
-		       const _Compare& __x = _Compare(),
-		       _Sequence&& __s = _Sequence())
-	: c(std::move(__s)), comp(__x)
-	{
-	  __glibcxx_requires_valid_range(__first, __last);
-	  c.insert(c.end(), __first, __last);
-	  std::make_heap(c.begin(), c.end(), comp);
-	}
-#endif
+	// 省略其他构造函数......
 
       /**
        *  Returns true if the %queue is empty.
        */
-      bool
-      empty() const
-      { return c.empty(); }
+    bool empty() const { 
+		return c.empty(); 
+	}
 
       /**  Returns the number of elements in the %queue.  */
-      size_type
-      size() const
-      { return c.size(); }
+    size_type size() const { return c.size(); }
 
       /**
        *  Returns a read-only (constant) reference to the data at the first
        *  element of the %queue.
        */
-      const_reference
-      top() const
-      {
-	__glibcxx_requires_nonempty();
-	return c.front();
-      }
+    const_reference top() const {
+		__glibcxx_requires_nonempty();
+		return c.front();
+    }
 
       /**
        *  @brief  Add data to the %queue.
@@ -911,29 +822,10 @@ public:
        *  The time complexity of the operation depends on the underlying
        *  sequence.
        */
-      void
-      push(const value_type& __x)
-      {
-	c.push_back(__x);
-	std::push_heap(c.begin(), c.end(), comp);
-      }
-
-#if __cplusplus >= 201103L
-      void
-      push(value_type&& __x)
-      {
-	c.push_back(std::move(__x));
-	std::push_heap(c.begin(), c.end(), comp);
-      }
-
-      template<typename... _Args>
-	void
-	emplace(_Args&&... __args)
-	{
-	  c.emplace_back(std::forward<_Args>(__args)...);
-	  std::push_heap(c.begin(), c.end(), comp);
-	}
-#endif
+    void push(const value_type& __x) {		// 优先队列中插入元素，先放到容器尾部，再进行“上移”操作使之满足堆性质。
+		c.push_back(__x);
+		std::push_heap(c.begin(), c.end(), comp);
+    }
 
       /**
        *  @brief  Removes first element.
@@ -946,30 +838,11 @@ public:
        *  data is needed, it should be retrieved before pop() is
        *  called.
        */
-      void
-      pop()
-      {
-	__glibcxx_requires_nonempty();
-	std::pop_heap(c.begin(), c.end(), comp);
-	c.pop_back();
-      }
-
-#if __cplusplus >= 201103L
-      void
-      swap(priority_queue& __pq)
-      noexcept(__and_<
-#if __cplusplus > 201402L || !defined(__STRICT_ANSI__) // c++1z or gnu++11
-		 __is_nothrow_swappable<_Sequence>,
-#else
-		 __is_nothrow_swappable<_Tp>,
-#endif
-		 __is_nothrow_swappable<_Compare>
-	       >::value)
-      {
-	using std::swap;
-	swap(c, __pq.c);
-	swap(comp, __pq.comp);
-      }
-#endif // __cplusplus >= 201103L
-    };
+    void pop() {		//从优先队列中弹出首元素
+		__glibcxx_requires_nonempty();
+		std::pop_heap(c.begin(), c.end(), comp);
+		c.pop_back();
+    }
+};
 ```
+可以看到只要理解了堆的实现原理，优先队列的实现原理就非常容易理解，堆的相关STL源码分析不在这里继续分析。
