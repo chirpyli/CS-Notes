@@ -46,6 +46,8 @@ Lisheng Computer science learning.
 - [boost库log输出到文件](./C++/Boost/boost库log输出到文件.md)
 - [boost库log之logger](./C++/Boost/boost库log之logger.md)   
 
+
+
 ### Rust
 - [rust learning resource](./Rust/rust-learning-resource.md)
 - [RefCell和内部可变性](./Rust/RefCell和内部可变性.md)
@@ -70,7 +72,10 @@ Lisheng Computer science learning.
 - [YAML学习笔记](./Others/YAML学习笔记.md)
 - [TOML学习笔记](./Others/TOML学习笔记.md)
 
-
+### 分布式
+- [分布式ID学习笔记](./DistributeSystem/分布式ID学习笔记.md)
+- [分布式系统：时间、时钟和事件序列](./DistributeSystem/分布式系统：时间、时钟和事件序列.md)
+- [分布式系统：向量时钟](./DistributeSystem/分布式系统：向量时钟.md)
 
 ### 密码学
 - [分组密码及AES算法初识](./Crypto/分组密码及AES算法初识.md)  
@@ -116,12 +121,10 @@ Lisheng Computer science learning.
 - [如何让VisualStudioCode打开文件始终在新标签页打开](./Tools/如何让VisualStudioCode打开文件始终在新标签页打开.md)   
 - [matlab笔记](./Tools/matlab笔记.md)
 
-### ELK
-- [Filebeat+Logstash+Elasticsearch+Kibana安装](./ELK日志/Filebeat+Logstash+Elasticsearch+Kibana安装.md)
+### ELK         
+- [Filebeat+Logstash+Elasticsearch+Kibana安装](./ELK日志/Filebeat+Logstash+Elasticsearch+Kibana安装.md)     
 - [Filebeat概述](./ELK日志/Filebeat概述.md)
 - [Filebeat工作原理](./ELK日志/Filebeat工作原理.md)
 - [Logstash参考指南：存储你的第一个事件](./ELK日志/Logstash参考指南：存储你的第一个事件.md)
 - [使用Logstash解析日志](./ELK平台/使用Logstash解析日志.md)
 - [Elasticsearch定时删除索引](./ELK平台/Elasticsearch定时删除索引.md)
-
-
