@@ -1,5 +1,5 @@
 #### 一、线程池相关概念
-线程池，就是一组工作线程，工作线程的数量一般与CPU核数相关（如果是CPU密集型任务，可初始设为$N_{CPUS}+1$，如果是IO密集型任务，可初始设为$2*N_{CPUS}$，运行过程中可能会依据任务的繁忙程度而动态增减），由线程池负责管理工作线程的创建，异常处理（如果工作线程异常退出，会创建新的工作线程弥补线程池中的工作线程数量），任务分配等工作。线程池中一般会有一个任务队列，所有工作线程从任务队列中取任务，执行，如此反复。其核心是避免大量线程的创建及频繁的线程切换，尽最大可能提高CPU利用率。
+线程池，就是一组工作线程，工作线程的数量一般与CPU核数相关（如果是CPU密集型任务，可初始设为`N+1`，如果是IO密集型任务，可初始设为`2*N`，`N`为CPU核数，运行过程中可能会依据任务的繁忙程度而动态增减），由线程池负责管理工作线程的创建，异常处理（如果工作线程异常退出，会创建新的工作线程弥补线程池中的工作线程数量），任务分配等工作。线程池中一般会有一个任务队列，所有工作线程从任务队列中取任务，执行，如此反复。其核心是避免大量线程的创建及频繁的线程切换，尽最大可能提高CPU利用率。
 
 线程池有不同的实现形式，主要的区别就是如何指定因任务队列中任务的繁忙程度与调度管理工作线程的数量的调度策略。比如如果任务队列中有大量的任务等待处理，是否需要根据待处理任务队列的任务数量而开启新的工作线程去处理，等任务队列中的任务完成，再关闭部分工作线程。
 
@@ -198,7 +198,6 @@ pub struct Builder {
 }
 
 impl Builder {
-    /// Initiate a new [`Builder`].
     pub fn new() -> Builder {
         Builder {
             num_threads: None,
@@ -226,7 +225,6 @@ impl Builder {
             stack_size: self.thread_stack_size,
         });
 
-        // Threadpool threads
         for _ in 0..num_threads {
             spawn_in_pool(shared_data.clone());
         }
@@ -282,7 +280,6 @@ pub struct ThreadPool {
 }
 
 impl ThreadPool {
-    // Creates a new thread pool capable of executing `num_threads` number of jobs concurrently.
     pub fn new(num_threads: usize) -> ThreadPool {
         Builder::new().num_threads(num_threads).build()
     }
@@ -365,8 +362,7 @@ fn spawn_in_pool(shared_data: Arc<ThreadPoolSharedData>) {
                     break;
                 }
                 let message = {
-                    // Only lock jobs for the time it takes
-                    // to get a job, not run it.
+                    // Only lock jobs for the time it takes to get a job, not run it.
                     let lock = shared_data.job_receiver.lock().expect(
                         "Worker thread unable to lock job_receiver",
                     );
