@@ -31,6 +31,10 @@ Lisheng Computer science learning.
 - [C++PrimerPlus笔记](./C++/C++PrimerPlus/C++PrimerPlus笔记.md) 
 - [C++中前置++与后置++运算符重载](./C++/C++中前置++与后置++运算符重载.md)
 - [C++拷贝构造函数被调用的时机](./C++/C++拷贝构造函数被调用的时机.md)
+- [C++中空类和空结构体大小的问题](./C++/C++中空类和空结构体大小的问题.md)
+- [C++虚函数的工作原理](./C++/C++虚函数的工作原理.md)
+- [C++虚析构函数](./C++/C++虚析构函数.md)
+
 
 #### STL
 - [STL常用序列容器学习笔记](./C++/STL/STL常用序列容器学习笔记.md)
@@ -40,13 +44,11 @@ Lisheng Computer science learning.
 
 #### Boost
 - [boost安装](./C++/Boost/boost安装.md) 
-- [boost库noncopyable](./C++/Boost/boost库noncopyable.md)       
+- [boost库noncopyable](./C++/Boost/boost库noncopyable.md)      
 - [boost库log设计概述](./C++/Boost/boost库log设计概述.md)
 - [boost库log日志过滤](./C++/Boost/boost库log日志过滤.md)
 - [boost库log输出到文件](./C++/Boost/boost库log输出到文件.md)
 - [boost库log之logger](./C++/Boost/boost库log之logger.md)   
-
-
 
 ### Rust
 - [rust learning resource](./Rust/rust-learning-resource.md)
@@ -110,7 +112,7 @@ Lisheng Computer science learning.
 - [工作窃取算法work-stealing](./Backend/工作窃取算法work_stealing.md)
 - [日志库的设计思路](./Backend/日志库的设计思路.md)
 - [Yaml学习笔记](./Backend/YAML学习笔记.md)
-- [Protocol Buffers工作原理](ProtocolBuffers工作原理.md)
+- [Protocol Buffers工作原理](./Backend/ProtocolBuffers工作原理.md)
 
 ### Docker
 - [Docker更换为国内镜像](./Docker/Docker更换为国内镜像.md)
