@@ -109,6 +109,8 @@ Lisheng Computer science learning.
 ### 后端开发
 - [工作窃取算法work-stealing](./Backend/工作窃取算法work_stealing.md)
 - [日志库的设计思路](./Backend/日志库的设计思路.md)
+- [Yaml学习笔记](./Backend/YAML学习笔记.md)
+- [Protocol Buffers工作原理](ProtocolBuffers工作原理.md)
 
 ### Docker
 - [Docker更换为国内镜像](./Docker/Docker更换为国内镜像.md)
