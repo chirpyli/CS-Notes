@@ -106,6 +106,9 @@ Lisheng Computer science learning.
 - [Erlang安装](./MQ/Erlang安装.md)
 - [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
 
+### 后端开发
+- [工作窃取算法work-stealing](./Backend/工作窃取算法work_stealing.md)
+- [日志库的设计思路](./Backend/日志库的设计思路.md)
 
 ### Docker
 - [Docker更换为国内镜像](./Docker/Docker更换为国内镜像.md)
