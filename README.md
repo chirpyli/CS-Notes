@@ -25,7 +25,7 @@ Lisheng Computer science learning.
 - [Linux进程间通信——信号](./C/Linux进程间通信/信号.md)
 - [多线程编程](./C/多线程编程.md)
 - [epoll边缘触发与水平触发](./C/epoll边缘触发与水平触发.md)
-
+- [常见题目总结——字符串篇](./C/常用题目总结——字符串篇.md)
 ### C++
 - [C++笔试题](./C++/C++笔试题/C++笔试题.md)
 - [C++PrimerPlus笔记](./C++/C++PrimerPlus/C++PrimerPlus笔记.md) 
@@ -68,11 +68,7 @@ Lisheng Computer science learning.
 - [Rust双重循环break的问题](./Rust双重循环break的问题.md)   
 - [log4rs日志库简析](./Rust/log4rs日志库简析.md)
 
-### 其他
-- [工作窃取算法work-steal](./Others/工作窃取算法work-stealing.md)
-- [日志库的设计思路](./Others/日志库的设计思路.md)     
-- [YAML学习笔记](./Others/YAML学习笔记.md)
-- [TOML学习笔记](./Others/TOML学习笔记.md)
+
 
 ### 分布式
 - [分布式ID学习笔记](./DistributeSystem/分布式ID学习笔记.md)
@@ -104,15 +100,19 @@ Lisheng Computer science learning.
 - [Fabric网络节点发现及成员管理](https://juejin.im/post/5d3035daf265da1b7f29b645)                
 - [Fabric网络组织与主节点选举](https://juejin.im/post/5d3033af6fb9a07ebe74f703)                 
 
-### MQ
-- [Erlang安装](./MQ/Erlang安装.md)
-- [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
 
 ### 后端开发
 - [工作窃取算法work-stealing](./Backend/工作窃取算法work_stealing.md)
 - [日志库的设计思路](./Backend/日志库的设计思路.md)
 - [Yaml学习笔记](./Backend/YAML学习笔记.md)
 - [Protocol Buffers工作原理](./Backend/ProtocolBuffers工作原理.md)
+- [TOML学习笔记](./Backend/TOML学习笔记.md)
+
+### MQ
+- [Erlang安装](./MQ/Erlang安装.md)
+- [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
+- [RabbitMQ基础](./MQ/RabbitMQ基础.md)      
+
 
 ### Docker
 - [Docker更换为国内镜像](./Docker/Docker更换为国内镜像.md)
@@ -127,6 +127,7 @@ Lisheng Computer science learning.
 - [代码统计工具cloc](./Tools/代码统计工具.md)
 - [如何让VisualStudioCode打开文件始终在新标签页打开](./Tools/如何让VisualStudioCode打开文件始终在新标签页打开.md)   
 - [matlab笔记](./Tools/matlab笔记.md)
+
 
 ### ELK         
 - [Filebeat+Logstash+Elasticsearch+Kibana安装](./ELK日志/Filebeat+Logstash+Elasticsearch+Kibana安装.md)     
