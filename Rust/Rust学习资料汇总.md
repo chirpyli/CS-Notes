@@ -59,10 +59,7 @@ Rust异步编程
 ### Rust开源项目
 - [libra](https://github.com/libra/libra) ：Facebook区块链项目
 - [tikv](https://github.com/tikv/tikv)：国内pingcap分布式数据库项目
-
-
-
----
-先到这里吧，后面学习到了再添加。
+- [parity](https://github.com/paritytech/parity): 以太坊Rust实现
+- [parity-bitcoin](https://github.com/paritytech/parity-bitcoin)： 比特币的Rust实现
 
 
