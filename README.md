@@ -34,12 +34,13 @@ Computer science learning notes.
 - [分布式ID学习笔记](./DistributeSystem/分布式ID学习笔记.md)
 - [分布式系统：时间、时钟和事件序列](./DistributeSystem/分布式系统：时间、时钟和事件序列.md)
 - [分布式系统：向量时钟](./DistributeSystem/分布式系统：向量时钟.md)
-
+- [Gossip协议](./DistributeSystem/Gossip协议.md)
 
      
 
 ### 计算机网络
-
+- [网络错误：Destination unreachable (Host administratively prohibited)](./Network/网络错误:Destination_unreachable:Host_administratively_prohibited.md)
+- [127.0.0.1与0.0.0.0及本机IP地址的区别](./Network/127.0.0.1与0.0.0.0及本机IP地址的区别.md)
 #### TCP/IP协议
 - [ARP协议](./Network/ARP协议.md)
 - [ICMP协议](./Network/ICMP协议.md)
