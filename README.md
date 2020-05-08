@@ -67,7 +67,7 @@ Lisheng Computer science learning.
 - [Rust轻量级I/O库mio](./Rust/Rust轻量级IO库mio.md)     
 - [Rust双重循环break的问题](./Rust双重循环break的问题.md)   
 - [log4rs日志库简析](./Rust/log4rs日志库简析.md)
-
+- [Rust学习资料汇总](./Rust/Rust学习资料汇总.md)
 
 
 ### 分布式
