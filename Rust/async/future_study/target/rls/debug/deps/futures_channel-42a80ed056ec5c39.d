@@ -1,0 +1,10 @@
+/home/sl/Works/github/CS-Notes/Rust/async/future_study/target/rls/debug/deps/futures_channel-42a80ed056ec5c39.rmeta: /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/lib.rs /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/lock.rs /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/mpsc/mod.rs /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/mpsc/queue.rs /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/mpsc/sink_impl.rs /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/oneshot.rs
+
+/home/sl/Works/github/CS-Notes/Rust/async/future_study/target/rls/debug/deps/futures_channel-42a80ed056ec5c39.d: /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/lib.rs /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/lock.rs /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/mpsc/mod.rs /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/mpsc/queue.rs /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/mpsc/sink_impl.rs /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/oneshot.rs
+
+/home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/lib.rs:
+/home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/lock.rs:
+/home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/mpsc/mod.rs:
+/home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/mpsc/queue.rs:
+/home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/mpsc/sink_impl.rs:
+/home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/futures-channel-0.3.5/src/oneshot.rs:
