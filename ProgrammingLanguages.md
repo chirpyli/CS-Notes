@@ -39,6 +39,7 @@
 ### Rust
 - [Rust学习资料汇总](./Rust/Rust学习资料汇总.md)
 - [Rust异步之Future](./Rust/async/Rust异步之Future.md)
+- [Rust异步之tokio](./Rust/async/Rust异步之tokio.md)
 - [RefCell和内部可变性](./Rust/RefCell和内部可变性.md)
 - [Rust关联类型与默认类型参数](./Rust/Rust关联类型与默认类型参数.md)
 - [Rust写时复制](./Rust/Rust写时复制.md)
