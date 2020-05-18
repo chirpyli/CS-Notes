@@ -8,9 +8,12 @@
 
 >Rust对单元测试的支持是非常友好的，可参考[Writing Automated Tests](https://doc.rust-lang.org/book/ch11-00-testing.html)这一章。
 
+### [Rust 程序设计语言 简体中文版](https://kaisery.github.io/trpl-zh-cn/title-page.html)
 
 ### [Rust by Example](https://doc.rust-lang.org/stable/rust-by-example/)
 通过代码示例学习Rust。
+
+### [The Rust Reference](https://doc.rust-lang.org/nightly/reference/introduction.html#introduction)
 
 ### [The Cargo Book](https://doc.rust-lang.org/cargo/index.html)
 Rust包管理工具，提供了编译、安装等功能。`cargo build`编译真的很方便，就是编译大项目时时间稍微有点长。
