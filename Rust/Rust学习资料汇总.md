@@ -29,7 +29,8 @@ Rust包管理工具，提供了编译、安装等功能。`cargo build`编译真
 - `dyn` - dynamic dispatch to a trait object
 
 ### [The Rustonomicon(The Dark Arts of Unsafe Rust)](https://doc.rust-lang.org/stable/nomicon/)
-这本是Rust进阶读物，比较有难度，比较底层一些。
+这本是Rust进阶读物，比较有难度，比较底层一些。中文翻译：[《Rust 高级编程》](https://learnku.com/docs/nomicon/2018)
+
 
 
 ### [The Rust Standard Library](https://doc.rust-lang.org/std/index.html)
