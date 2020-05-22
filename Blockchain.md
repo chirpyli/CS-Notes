@@ -29,5 +29,5 @@
 
 
 ### Fabric
-- [Fabric网络节点发现及成员管理](https://juejin.im/post/5d3035daf265da1b7f29b645)                
+- [Fabric网络节点发现及成员管理](./Blockchain/fabric/Fabric网络节点发现及成员管理.md)                
 - [Fabric网络组织与主节点选举](./Blockchain/fabric/Fabric网络组织与主节点选举.md)  
