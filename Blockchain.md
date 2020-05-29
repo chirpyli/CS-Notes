@@ -23,8 +23,8 @@
 
 ### Ethereum 
 - [以太坊学习笔记](./Blockchain/ethereum/以太坊学习笔记.md)         
-- [以太坊节点发现协议](https://juejin.im/post/5d302646f265da1bcd380f14)         
-- [以太坊RLPx传输协议](https://juejin.im/post/5d2fe437f265da1bc23fae51)             
+- [以太坊节点发现协议](./Blockchain/ethereum/以太坊节点发现协议.md)         
+- [以太坊RLPx传输协议](./Blockchain/ethereum/以太坊RLPx传输协议.md)             
   
 
 
