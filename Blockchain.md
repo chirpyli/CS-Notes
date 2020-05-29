@@ -22,7 +22,7 @@
 - [比特币挖矿](https://juejin.im/post/5d27ecfae51d45776031b074)         
 
 ### Ethereum 
-- [以太坊学习笔记](https://juejin.im/post/5d358c59f265da1bb776a805)         
+- [以太坊学习笔记](./Blockchain/ethereum/以太坊学习笔记.md)         
 - [以太坊节点发现协议](https://juejin.im/post/5d302646f265da1bcd380f14)         
 - [以太坊RLPx传输协议](https://juejin.im/post/5d2fe437f265da1bc23fae51)             
   
