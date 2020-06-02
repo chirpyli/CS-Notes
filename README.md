@@ -16,6 +16,15 @@ Computer science learning notes.
 ### 区块链
 - [Blockchain、Bitcoin、Ethereum、Fabric、Crypto](./Blockchain.md)
 
+### 分布式系统
+- [分布式系统：时间、时钟和事件序列](./DistributeSystem/分布式系统：时间、时钟和事件序列.md)
+- [分布式系统：向量时钟](./DistributeSystem/分布式系统：向量时钟.md)
+- [Rafr共识算法](./DistributeSystem/Raft共识算法.md)
+- [Gossip协议](./DistributeSystem/Gossip协议.md)
+- [分布式ID学习笔记](./DistributeSystem/分布式ID学习笔记.md)
+     
+
+
 ### Linux
 - [自旋锁](./Linux/自旋锁.md)
 - [顺序锁](./Linux/顺序锁.md)
@@ -30,13 +39,6 @@ Computer science learning notes.
 
 
 
-### 分布式
-- [分布式ID学习笔记](./DistributeSystem/分布式ID学习笔记.md)
-- [分布式系统：时间、时钟和事件序列](./DistributeSystem/分布式系统：时间、时钟和事件序列.md)
-- [分布式系统：向量时钟](./DistributeSystem/分布式系统：向量时钟.md)
-- [Gossip协议](./DistributeSystem/Gossip协议.md)
-
-     
 
 ### 计算机网络
 - [网络错误：Destination unreachable (Host administratively prohibited)](./Network/网络错误:Destination_unreachable:Host_administratively_prohibited.md)
