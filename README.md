@@ -23,7 +23,10 @@ Computer science learning notes.
 - [Gossip协议](./DistributeSystem/Gossip协议.md)
 - [分布式ID学习笔记](./DistributeSystem/分布式ID学习笔记.md)
      
-
+> reference
+>- [raft paper](./DistributeSystem/reference/raft.pdf)
+>- [raftstudy](./DistributeSystem/reference/raftstudy.pdf)
+>- [paxos-simple](./DistributeSystem/reference/paxos-simple.pdf)
 
 ### Linux
 - [自旋锁](./Linux/自旋锁.md)
