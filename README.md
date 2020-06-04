@@ -19,7 +19,8 @@ Computer science learning notes.
 ### 分布式系统
 - [分布式系统：时间、时钟和事件序列](./DistributeSystem/分布式系统：时间、时钟和事件序列.md)
 - [分布式系统：向量时钟](./DistributeSystem/分布式系统：向量时钟.md)
-- [Rafr共识算法](./DistributeSystem/Raft共识算法.md)
+- [Raft共识算法](./DistributeSystem/Raft共识算法.md)
+- [Quorum NWR算法](./DistributeSystem/QuorumNWR算法.md)     
 - [Gossip协议](./DistributeSystem/Gossip协议.md)
 - [分布式ID学习笔记](./DistributeSystem/分布式ID学习笔记.md)
      
