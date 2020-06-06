@@ -23,7 +23,7 @@ Computer science learning notes.
 - [Quorum NWR算法](./DistributeSystem/QuorumNWR算法.md)     
 - [Gossip协议](./DistributeSystem/Gossip协议.md)
 - [分布式ID学习笔记](./DistributeSystem/分布式ID学习笔记.md)
-     
+- [对共识算法的若干思考](./DistributeSystem/对共识算法的若干思考.md)     
 > reference
 >- [raft paper](./DistributeSystem/reference/raft.pdf)
 >- [raftstudy](./DistributeSystem/reference/raftstudy.pdf)
