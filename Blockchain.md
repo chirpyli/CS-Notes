@@ -17,7 +17,7 @@
 - [椭圆曲线密码算法概述](./Crypto/椭圆曲线密码算法概述.md)
 
 ### Bitcoin
-- [PoW共识算法](https://github.com/superLish/parity-bitcoin/blob/study/bitcoin/Pow共识算法.md)      
+- [PoW共识算法](https://github.com/superLish/parity-bitcoin/blob/study/bitcoin/PoW共识算法.md)      
 - [比特币私钥、账户与钱包](https://github.com/superLish/parity-bitcoin/blob/study/bitcoin/比特币私钥、账户与钱包.md)              
 - [比特币交易](https://github.com/superLish/parity-bitcoin/blob/study/bitcoin/比特币交易.md)         
 - [比特币核心数据结构](https://github.com/superLish/parity-bitcoin/blob/study/bitcoin/比特币核心数据结构.md)         
