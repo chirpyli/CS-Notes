@@ -29,6 +29,9 @@ Computer science learning notes.
 >- [raftstudy](./DistributeSystem/reference/raftstudy.pdf)
 >- [paxos-simple](./DistributeSystem/reference/paxos-simple.pdf)
 
+### 数据库
+- [leveldb学习笔记](./Database/leveldb.md)
+
 ### Linux
 - [自旋锁](./Linux/自旋锁.md)
 - [顺序锁](./Linux/顺序锁.md)
