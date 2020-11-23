@@ -1,0 +1,7 @@
+/home/sl/Works/github/CS-Notes/Rust/async/asynchronous/target/debug/deps/atty-e5e362e88c53f642.rmeta: /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/atty-0.2.14/src/lib.rs
+
+/home/sl/Works/github/CS-Notes/Rust/async/asynchronous/target/debug/deps/libatty-e5e362e88c53f642.rlib: /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/atty-0.2.14/src/lib.rs
+
+/home/sl/Works/github/CS-Notes/Rust/async/asynchronous/target/debug/deps/atty-e5e362e88c53f642.d: /home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/atty-0.2.14/src/lib.rs
+
+/home/sl/.cargo/registry/src/mirrors.ustc.edu.cn-12df342d903acd47/atty-0.2.14/src/lib.rs:
