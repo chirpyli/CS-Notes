@@ -281,3 +281,5 @@ pingcap/tikv:latest \
   ]
 }
 ```
+
+简单测试程序见[tikv-raw](./tikv-raw)
