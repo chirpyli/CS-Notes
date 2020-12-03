@@ -31,6 +31,7 @@ Computer science learning notes.
 
 ### 数据库
 - [leveldb学习笔记](./Database/leveldb.md)
+- [单机部署Tikv](./Database/单机部署Tikv.md)
 
 ### Linux
 - [自旋锁](./Linux/自旋锁.md)
