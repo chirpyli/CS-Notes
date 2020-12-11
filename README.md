@@ -30,7 +30,7 @@ Computer science learning notes.
 >- [paxos-simple](./DistributeSystem/reference/paxos-simple.pdf)
 
 ### 数据库
-- [leveldb学习笔记](./Database/leveldb.md)
+- [leveldb学习笔记](./Database/leveldb/leveldb.md)
 - [单机部署Tikv](./Database/单机部署Tikv.md)
 
 ### Linux
