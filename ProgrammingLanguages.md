@@ -6,7 +6,7 @@
 - [Linux进程间通信——管道](./C/Linux进程间通信/管道.md)
 - [Linux进程间通信——信号](./C/Linux进程间通信/信号.md)
 - [多线程编程](./C/多线程编程.md)
-- [epoll边缘触发与水平触发](./C/epoll边缘触发与水平触发.md)
+- [epoll边缘触发与水平触发](https://github.com/superLish/echo-epoll/blob/master/doc/epoll%E8%BE%B9%E7%BC%98%E8%A7%A6%E5%8F%91%E4%B8%8E%E6%B0%B4%E5%B9%B3%E8%A7%A6%E5%8F%91.md)
 - [常见题目总结——字符串篇](./C/常用题目总结——字符串篇.md)
 - [poll编程示例](./C/poll编程示例.md)
 
