@@ -2,3 +2,5 @@
 .idea/
 *.lock
 */*/target
+
+console_error.log
