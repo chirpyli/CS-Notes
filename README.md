@@ -1,11 +1,6 @@
 # CS-Notes
 Computer science learning notes. 
 
-迁移至https://github.com/superLish/superLish.github.io
-博文访问：https://superlish.github.io/
-
-后续更新在https://github.com/superLish/superLish.github.io，本仓库不再更新.
-
 ## Content
 
 ### 数据结构及算法
