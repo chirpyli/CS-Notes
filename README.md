@@ -65,6 +65,9 @@ Computer science learning notes.
 - [Protocol Buffers工作原理](./Backend/ProtocolBuffers工作原理.md)
 - [TOML学习笔记](./Backend/TOML学习笔记.md)
 
+### 软件工程
+- [关于是否升级第三方库的思考](./SoftwareEngineering/关于是否升级第三方库的思考.md)
+
 ### MQ
 - [Erlang安装](./MQ/Erlang安装.md)
 - [安装指定版本erlang与rabbitmq](./MQ/安装指定版本erlang与rabbitmq.md)
