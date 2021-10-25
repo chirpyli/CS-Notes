@@ -40,7 +40,6 @@ public:
 
 既然虚函数表指针通常放在对象实例的最前面的位置，那么我们应该可以通过代码来访问虚函数表，通过下面这段代码加深对虚函数表的理解：
 ```c++
-#include "stdafx.h"
 #include<iostream>
 using namespace std;
 
@@ -59,7 +58,8 @@ public:
 	int a;
 };
 
-int _tmain(int argc, _TCHAR* argv[]) {
+void main() 
+{
 	typedef void(*pFunc)(void);
 	Base b;
 	cout<<"虚函数表指针地址："<<(int*)(&b)<<endl;
@@ -72,9 +72,6 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	pfun();
 	pfun=(pFunc)*((int*)(*(int*)(&b))+2);
 	pfun();
-
-	system("pause");
-	return 0;
 }
 ```
 运行结果：      
@@ -121,15 +118,13 @@ public:
 
 另外，我们注意到，类Child和类Base中都只有一个vfptr指针（指向的是不同的虚函数表），前面我们说过，该指针指向虚函数表，我们分别输出类Child和类Base的vfptr:
 ```c++
-int _tmain(int argc, _TCHAR* argv[]) {
+void main() 
+{
 	typedef void(*pFunc)(void);
 	Base b;
 	Child c;
 	cout<<"Base类的虚函数表指针地址："<<(int*)(&b)<<endl;
 	cout<<"Child类的虚函数表指针地址："<<(int*)(&c)<<endl;
-
-	system("pause");
-	return 0;
 }
 ```
 运行结果：      
@@ -139,15 +134,13 @@ int _tmain(int argc, _TCHAR* argv[]) {
 
 下面这段代码，说明了<font color=blue>父类和基类拥有不同的虚函数表，同一个类拥有相同的虚函数表，同一个类的不同对象的地址（存放虚函数表指针的地址）不同。</font>
 ```c++
-int _tmain(int argc, _TCHAR* argv[]) {
+void main() 
+{
 	Base b;
 	Child c1,c2;
 	cout<<"Base类的虚函数表的地址："<<(int*)(*(int*)(&b))<<endl;
 	cout<<"Child类c1的虚函数表的地址："<<(int*)(*(int*)(&c1))<<endl;	//虚函数表指针指向的地址值
 	cout<<"Child类c2的虚函数表的地址："<<(int*)(*(int*)(&c2))<<endl;
-
-	system("pause");
-	return 0;
 }
 ```
 运行结果：
@@ -157,7 +150,6 @@ int _tmain(int argc, _TCHAR* argv[]) {
 
 动态绑定例子：
 ```c++
-#include "stdafx.h"
 #include<iostream>
 using namespace std;
 
@@ -189,26 +181,22 @@ public:
 	}
 };
 
-
-int _tmain(int argc, _TCHAR* argv[]) {
-	Base* p=new Child;
+void main() 
+{
+	Base* p = new Child;
 	p->fun1();
 	p->fun2();
 	p->fun3();
-
-	system("pause");
-	return 0;
 }
-
 ```
 运行结果：
 ![这里写图片描述](https://user-gold-cdn.xitu.io/2019/7/5/16bc0baecd30d60f?w=303&h=190&f=png&s=16339)
 结合上面的内存布局：
 ![这里写图片描述](https://user-gold-cdn.xitu.io/2019/7/5/16bc0baed13aa980?w=361&h=375&f=png&s=5236)
 
-其实，在new Child时构造了一个子类的对象，子类对象按上面所讲，在构造函数期间完成虚函数表指针vfptr指向Child类的虚函数表，将这个对象的地址赋值给了Base类型的指针p，当调用p->fun1()时，发现是虚函数，调用虚函数指针查找虚函数表中对应虚函数的地址，这里就是&Child::fun1。调用p->fun2()情况相同。调用p->fun3()时，子类并没有重写父类虚函数，但依旧通过调用虚函数指针查找虚函数表，发现对应函数地址是&Base::fun3。所以上面的运行结果如上图所示。
+其实，在`new Child`时构造了一个子类的对象，子类对象按上面所讲，在构造函数期间完成虚函数表指针`vfptr`指向`Child`类的虚函数表，将这个对象的地址赋值给了`Base`类型的指针p，当调用`p->fun1()`时，发现是虚函数，调用虚函数指针查找虚函数表中对应虚函数的地址，这里就是`&Child::fun1`。调用`p->fun2()`情况相同。调用`p->fun3()`时，子类并没有重写父类虚函数，但依旧通过调用虚函数指针查找虚函数表，发现对应函数地址是`&Base::fun3`。所以上面的运行结果如上图所示。
 
-到这里，你是否已经明白为什么指向子类实例的基类指针可以调用子类（虚）函数？每一个实例对象中都存在一个vfptr指针，编译器会先取出vfptr的值，这个值就是虚函数表vftable的地址，再根据这个值来到vftable中调用目标函数。所以，只要vfptr不同，指向的虚函数表vftable就不同，而不同的虚函数表中存放着对应类的虚函数地址，这样就实现了多态的”效果“。
+到这里，你是否已经明白为什么指向子类实例的基类指针可以调用子类（虚）函数？每一个实例对象中都存在一个`vfptr`指针，编译器会先取出`vfptr`的值，这个值就是虚函数表`vftable`的地址，再根据这个值来到`vftable`中调用目标函数。所以，只要`vfptr`不同，指向的虚函数表`vftable`就不同，而不同的虚函数表中存放着对应类的虚函数地址，这样就实现了多态的效果。
 
 ---
 >可以参考[从编译器的辅助信息看c++对象内存布局](https://www.jianshu.com/p/5eb786351b7d)

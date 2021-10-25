@@ -10,7 +10,7 @@
 - [常见题目总结——字符串篇](./C/常用题目总结——字符串篇.md)
 - [poll编程示例](./C/poll编程示例.md)
 - [理解指针](./C/understand_pointer.md)
-
+- [用C模拟实现虚函数](./C/c_virtual_function_impl.md)
 --- 
 
 ### C++
