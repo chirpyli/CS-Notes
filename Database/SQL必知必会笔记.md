@@ -213,3 +213,252 @@ postgres=# select a from t1 where b in (select a from t2 where a < 3);
 ```
 
 #### 第12课 联结表
+0. 为什么使用联结？
+将数据分解为多个表能更有效地存储数据，更方便的处理，并且伸缩性更好。但这种好处是有代价的，如果数据存储在多个表中，怎样用一条`SELECT`语句就检索出数据呢？联结。联结是一种机制，用来在一条`SELECT`语句中关联表，因此称为联结。
+
+> 数据库内部是实现的原理是笛卡儿积，一般有hash join,merge join,nestloop join等算法实现。.
+
+1. WHERE子句的重要性
+在联结两个表时，实际要做的是将第一个表中的每一行与第二个表中的每一行配对。`WHERE`子句作为过滤条件，只包含那些匹配给定条件（联结条件）的行。没有WHERE子句，第一个表中的每一行将与第二个表中的每一行配对，而不管它们逻辑上是否能匹配在一起。
+```sql
+postgres=# select * from t1;
+ a | b 
+---+---
+ 1 | 1
+ 2 | 2
+ 3 | 3
+(3 rows)
+
+postgres=# select * from t2;
+ a 
+---
+ 1
+ 2
+ 3
+ 4
+ 5
+(5 rows)
+
+-- 没有用where子句的情况
+postgres=# select t1.a,t2.a from t1,t2;
+ a | a 
+---+---
+ 1 | 1
+ 2 | 1
+ 3 | 1
+ 1 | 2
+ 2 | 2
+ 3 | 2
+ 1 | 3
+ 2 | 3
+ 3 | 3
+ 1 | 4
+ 2 | 4
+ 3 | 4
+ 1 | 5
+ 2 | 5
+ 3 | 5
+(15 rows)
+
+-- 加上where子句，等值联结
+postgres=# select t1.a,t2.a from t1,t2 where t1.b=t2.a;
+ a | a 
+---+---
+ 1 | 1
+ 2 | 2
+ 3 | 3
+(3 rows)
+```
+
+### 第13课 高级联结
+0. 表别名
+Oracle中没有AS，不支持AS关键字，要在Oracle中使用别名，可以不用AS简单指定列名即可（Customers C 而不是Customers AS C），PostgreSQL中是用AS关键字。
+```sql
+-- pg用法
+postgres=# select a+b as c from t1 ;
+ c 
+---
+ 2
+ 4
+ 6
+```
+
+1. 自联结（self-join）
+一个表自己和自己联结，也可以用子查询解决，但很多情况下自联结效率更高，下面的例子可能不是很有效。可参考其他示例。
+```
+postgres=# select * from t1;
+ a | b 
+---+---
+ 1 | 1
+ 2 | 2
+ 3 | 3
+ 4 | 5
+(4 rows)
+
+postgres=# select ta.a,tb.b from t1 as ta ,t1 as tb where ta.a=tb.b;
+ a | b 
+---+---
+ 1 | 1
+ 2 | 2
+ 3 | 3
+(3 rows)
+```
+
+2. 自然联结（natural join）
+自然联结是一种特殊的等值连接，它要求两个关系中进行比较的分量必须是相同的属性组，并且在结果中把重复的属性列去掉。而等值连接并不去掉重复的属性列。
+自然连接也可看作是在广义笛卡尔积R×S中选出同名属性上符合相等条件元组，再进行投影，去掉重复的同名属性，组成新的关系。
+
+3. 外联结（outer join）
+如果把舍弃的元组也保存在结果关系中，而在其他属性上空值，那么这种连接就叫外连接。如果只把左边关系R要舍弃的元组保留就叫左外连接，如果只把右边关系S中要舍弃的元组保留右外连接。
+
+
+### 第14课 组合查询
+0. 多数SQL查询只包含一个或多个表中返回数据的单条SELECT语句。但是，SQL也允许执行多个查询，并将结果作为一个查询结果集返回。这些组合查询通常称为并union或复合查询。
+
+可用UNION操作符来组合数条SQL查询，利用UNION可以给出多条SELECT语句，将它们的结果组合成一个结果集。UNION从查询结果集中自动取出来重复的行，这是UNION的默认行为，如果要保留的话，可用UNION ALL。
+```sql
+mydb=# select * from customer ;
+ id |  name  
+----+--------
+  1 | luli
+  2 | hjn
+  3 | meng
+  4 | wangle
+(4 rows)
+
+mydb=# select * from customer where id>2 union select * from customer where name in ('luli', 'meng');
+ id |  name  
+----+--------
+  4 | wangle
+  1 | luli
+  3 | meng
+(3 rows)
+```
+
+1. 对组合查询结果排序
+在用UNION组合查询时，只能使用一条ORDER BY子句，它必须位于最后一条SELECT语句之后，对于结果集，不存在用一种方式排序一部分而又用另一种方式排序另一部分的情况，因此不允许使用多条ORDER BY子句。
+```sql
+mydb=# select * from customer where id>2 union select * from customer where name in ('luli', 'meng') order by id;
+ id |  name  
+----+--------
+  1 | luli
+  3 | meng
+  4 | wangle
+(3 rows)
+```
+虽然是在最后一条SELECT语句应用了order by子句。ORDER BY子句似乎只是最后一条SELECT语句的组成部分，但实际上是用它来排序所有SELECT语句返回的所有结果。
+
+
+### 第15课 插入数据
+插入数据比较简单看下面的例子：
+```sql
+mydb=# select * from customer ;
+ id |  name  
+----+--------
+  1 | luli
+  2 | hjn
+  3 | meng
+  4 | wangle
+(4 rows)
+
+mydb=# insert into customer(id,name) values(5,'fang');      -- 最好指定插入列
+INSERT 0 1
+
+mydb=# insert into customer select * from customer where id =1;  -- 插入检索出的数据
+INSERT 0 1
+mydb=# select * from customer ;
+ id |  name  
+----+--------
+  1 | luli
+  2 | hjn
+  3 | meng
+  4 | wangle
+  5 | fang
+  1 | luli
+(6 rows)
+
+```
+
+### 第16课 更新和删除数据
+需要注意删除数据的方式，如果删除表中所有行的话，更高效的方式是使用truncate table;
+
+### 第17课 创建和操纵表
+不指定NOT NULL时，多数数据库认为指定的是NULL。
+
+### 第18课 使用视图
+视图是虚拟的表。为什么使用视图呢？有下面这些点：
+- 重用SQL语句
+- 简化复杂的SQL操作，在编写查询后，可以方便地重用它而不必知道其基本查询细节
+- 使用表的一部分而不是整个表
+- 保护数据，可以授予用户访问表的特定部分权限，而不是整个表的访问权限。
+- 更改数据格式和表示，视图可返回与底层表的表示和格式不同的数据。
+
+```sql
+-- 创建视图
+postgres=# create view tv(a,b,c,d) as select tt.a,tt.b,t.a,t.b from tt,t;
+CREATE VIEW
+```
+
+### 第19课 使用存储过程
+存储过程就是为以后使用而保存的一条或多条SQL语句。
+
+### 第20课 事务处理
+使用事务处理，通过确保成批的SQL操作要么完全执行，要么完全不执行来维护数据库的完整性。
+
+> 关系型数据库中，事务是非常重要的。
+
+涉及到begin，commit，rollback等。
+
+```sql
+postgres=# begin;
+BEGIN
+postgres=*# update tt set a=1;
+UPDATE 5
+postgres=*# commit;     -- 提交
+COMMIT
+postgres=# select * from tt;
+ a | b 
+---+---
+ 1 | 1
+ 1 | 2
+ 1 | 3
+ 1 | 4
+ 1 | 5
+(5 rows)
+
+postgres=# begin;
+BEGIN
+postgres=*# update tt set a=2;
+UPDATE 5
+postgres=*# rollback ;  -- 回滚
+ROLLBACK
+postgres=# select * from tt;
+ a | b 
+---+---
+ 1 | 1
+ 1 | 2
+ 1 | 3
+ 1 | 4
+ 1 | 5
+(5 rows)
+```
+
+### 第21课 使用游标
+结果集： SQL查询所检索出的结果。
+
+SQL检索操作返回一组称为结果集的行，有时需要在检索出来的行中前进或者后退一行或多行，这就是游标的用途所在。
+
+### 第22课 高级SQL特性
+
+**约束:**
+- 主键
+- 外键
+- NOT NULL
+- 唯一约束
+- 检查约束
+
+**索引：**
+- 索引改善检索操作的性能，但降低了数据插入、修改和删除的性能。执行这些操作的时候需要动态的更新索引。
+- 索引数据可能要占用大量的存储空间
+何时创建索引，如何使用索引需要看具体情况。
+
