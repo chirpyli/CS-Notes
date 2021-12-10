@@ -10,7 +10,8 @@ Computer science learning notes.
 - [Design pattern](https://github.com/superLish/design-pattern)
 
 ### 程序设计编程语言
-- [C、C++、Rust](./ProgrammingLanguages.md)
+- [Go to chirpyli/my-c-cpp](https://github.com/chirpyli/my-c-cpp)
+- [Go to my-rust](https://github.com/chirpyli/my-rust)
 
 ### 区块链
 - [Blockchain、Bitcoin、Ethereum、Fabric、Crypto](./Blockchain.md)
