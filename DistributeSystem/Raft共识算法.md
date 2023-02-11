@@ -47,7 +47,7 @@ Raft在任何时刻都满足如下特性：
 
 >这里还有补充一些细节，每个leader可以理解为都是有自己的任期(term)的，每一期起始于选举阶段，直到因节点失效等原因任期结束。每一期选举期间，每个follower节点只能投票一次。图中`t3`可能是因为没有获得超半数票等造成选举失败，须进行下一轮选举，此时follower可以再次对最先到达的candidate发出的`RequestVote`请求投票（先到先得）。
 
-![](https://user-gold-cdn.xitu.io/2019/7/31/16c45b04d1434bbe?w=510&h=193&f=png&s=18258)
+![image](./.images/raft_term.png)
 
 对所有的请求（RequestVote、AppendEntry等请求），如果发现其Term小于当前节点，则拒绝请求，如果是candidate选举期间，收到不小于当前节点任期的leader节点发来的`AppendEntry`请求，则认可该leader，candidate转换为follower。这里还有一些细节，follower节点怎么判断我是否投票给candidate节点呢？或者说，选举领导人应该有怎样的原则呢？如何选举才能保证满足上面提到过的第4条性质？后面会讲到这个问题。
 
